@@ -7,6 +7,7 @@ public class PointClass : MonoBehaviour
 {
     public int laneNumber;
     private Transform _currentPos = null;
+    public PointClass _currentPoint;
     public PointClass _onePoint;
     public PointClass _twoPoint;
     public Transform EndPos { get; set; }

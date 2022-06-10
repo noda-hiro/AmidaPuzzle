@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// ƒ¿”ÅŒã’Ç‰Á
+/// </summary>
 public class PointManager : MonoBehaviour
 {
     [SerializeField] private List<PointClass> _pointLists = new List<PointClass>();
@@ -14,7 +17,6 @@ public class PointManager : MonoBehaviour
         var lane0 = _pointLists.Where(x => 0 == x.laneNumber).ToList();
         var nearPoint = _pointLists.Min(x => x.GetDistance(playerPrefab.transform));
 
-        Debug.Log(nearPoint);
     }
     
 }
