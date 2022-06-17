@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Line : MonoBehaviour
 {
-    private LineRenderer lineRenderer;
+   /* private LineRenderer lineRenderer;
     private Camera mainCamera;
     private bool isTouch = true;
     private Vector3 pos;
@@ -126,6 +126,6 @@ public class Line : MonoBehaviour
             }
 
         }
-    }
+    }*/
 }
 

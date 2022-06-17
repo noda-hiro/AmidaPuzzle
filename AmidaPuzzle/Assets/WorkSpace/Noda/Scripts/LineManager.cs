@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LineManager : MonoBehaviour
 {
-    [SerializeField]
+  /*  [SerializeField]
     private GameObject lineObj;
     [SerializeField]
     private GameObject parent;
@@ -52,7 +52,7 @@ public class LineManager : MonoBehaviour
         //Instantiate(lineObj, currentPos, Quaternion.identity, parent.transform.parent);
         GameObject game = Instantiate(lineObj, new Vector3(transform.position.x,transform.position.y,parent.transform.position.z), Quaternion.identity);
         game.transform.SetParent(parent.transform.parent,true);
-    }
+    }*/
 
 
 }

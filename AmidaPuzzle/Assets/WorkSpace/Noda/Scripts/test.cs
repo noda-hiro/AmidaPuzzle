@@ -6,7 +6,7 @@ public class test : MonoBehaviour
 {
     private Transform firstPos;
     private Transform endPos;
-    [SerializeField] Camera camera;
+ /*   [SerializeField] Camera camera;
     private float maxDistance = 1f;
 
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class test : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("2");
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+          Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit2d = Physics2D.Raycast(ray.origin, ray.direction, maxDistance);
             //if(hit2d.collider.gameObject.name=="ObjName")
             if (hit2d.collider)
@@ -35,5 +35,5 @@ public class test : MonoBehaviour
         {
             Debug.Log("—£‚µ‚½");
         }
-    }
+    }*/
 }

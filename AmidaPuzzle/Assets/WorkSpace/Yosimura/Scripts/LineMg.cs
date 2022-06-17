@@ -5,7 +5,10 @@ using UnityEngine;
 public class LineMg : MonoBehaviour
 {
 
-    private Camera mainCamera;
+    public GameObject prefab;
+    private Vector3 mousePosition;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -16,17 +19,26 @@ public class LineMg : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit)) // Rayを投射
-            {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//RAYを生成
+            RaycastHit2D hit = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction); // Rayを投射
+
+
+
+           // Debug.Log("aaa");
+
                 if (hit.collider.CompareTag("Line")) // タグを比較
                 {
-                    Debug.Log("Hit"); // オブジェクトに当たったらHITのログを流す
-                }
-            }
+                //  Debug.Log("hit");
+                //生成したいPefabオブジェクトを指定し,マウスの座標に生成
+                mousePosition = Input.mousePosition;
+                mousePosition.z = 10.0f;
+                Instantiate(prefab, Camera.main.ScreenToWorldPoint(mousePosition), Quaternion.identity);
+
+                 }
+            
         }
     }
 }
