@@ -20,6 +20,7 @@ public class LinesModel
     private int count = 0;
     Vector3 screenPosition;
     Vector3 mousePosition;
+    LINE firstClickObjLineNum = null;
 
     public LinesModel()
     {
@@ -87,6 +88,7 @@ public class LinesModel
         }
         else if (hit.collider.gameObject.tag == "verticalLine")
         {
+            firstClickObjLineNum = hit.collider.gameObject.GetComponent<LINE>();
 
             create.Createline();
             lineren = create.line.GetComponent<LineRenderer>();
@@ -111,8 +113,10 @@ public class LinesModel
         // endPos = Vector3.zero;
         var hit = Physics2D.Raycast(X.origin, X.direction, maxDistance);
         LINE LINEScript = hit.collider.gameObject.GetComponent<LINE>();
+       // if (LINEScript == null) return;
+        Debug.Log(LINEScript.LineNumber + "lineNum");
 
-        if (hit.collider.gameObject.tag != "verticalLine" || LINEScript == null)
+        if (hit.collider.gameObject.tag == "BG"|| LINEScript.LineNumber == firstClickObjLineNum.LineNumber + 2 || LINEScript.LineNumber == firstClickObjLineNum.LineNumber - 2)
         {
             //   PosResset();
             FailureCreateSecondLinePoint();
@@ -120,8 +124,8 @@ public class LinesModel
             LineCurrentTypeCountNormal2();
             Debug.Log("a");
         }
-        else if (this.LineCurrentTypeCount.Value == 1 && LINEScript.LineNumber == LINEScript.LineNumber++
-            || this.LineCurrentTypeCount.Value == 1 && LINEScript.LineNumber == LINEScript.LineNumber--)
+        else if (this.LineCurrentTypeCount.Value == 1 && LINEScript.LineNumber == firstClickObjLineNum.LineNumber++
+            || this.LineCurrentTypeCount.Value == 1 && LINEScript.LineNumber == firstClickObjLineNum.LineNumber--)
         {
             SuccessCreateSecondLinePoint();
 
@@ -129,6 +133,14 @@ public class LinesModel
             LineCurrentTypeCountNormal2();
             Debug.Log("b");
         }
+        //else if (LINEScript.LineNumber == firstClickObjLineNum.LineNumber + 2 || LINEScript.LineNumber == firstClickObjLineNum.LineNumber - 2)
+        //{
+        //    //   PosResset();
+        //    FailureCreateSecondLinePoint();
+        //    LineCurrentTypeCountNormal();
+        //    LineCurrentTypeCountNormal2();
+        //    Debug.Log("a");
+        //}
     }
 
     /// <summary>
