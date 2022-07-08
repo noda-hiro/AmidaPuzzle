@@ -79,9 +79,27 @@ public class LineMake : MonoBehaviour
             {
 
                 isTouch = false;
-            }
 
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//RAY‚ğ¶¬
+                RaycastHit2D hit = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction); // Ray‚ğ“ŠË
+
+
+                 if (hit.collider == null)
+
+                    {
+
+                         //“–‚½‚ç‚È‚©‚Á‚½‚Æ‚«‚Ìˆ—
+                         Destroy(this.gameObject);
+                    }
+             }
+
+
+     
         }
 
     }
+        
+        
+
+
 }

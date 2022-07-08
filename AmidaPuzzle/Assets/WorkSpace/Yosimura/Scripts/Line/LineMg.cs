@@ -40,9 +40,10 @@ public class LineMg : MonoBehaviour
                 InstLineObj();
 
             }
+
         }
 
-
+      
     }
 
     void InstLineObj()
