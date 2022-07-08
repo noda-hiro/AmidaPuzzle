@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Line : MonoBehaviour
 {
-    private LineRenderer lineRenderer;
+   /* private LineRenderer lineRenderer;
     private Camera mainCamera;
     private bool isTouch = true;
     private Vector3 pos;
@@ -23,7 +23,7 @@ public class Line : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LineContraction();
+      LineContraction();
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ public class Line : MonoBehaviour
     /// </summary>
     private void SettingLineRender()
     {
-        lineManager = GameObject.Find("PointManager").GetComponent<LineManager>();
+        lineManager = GameObject.Find("Point").GetComponent<LineManager>();
         lineRenderer = GetComponent<LineRenderer>();
 
         // lineRenderer.useWorldSpace = false;
@@ -126,6 +126,6 @@ public class Line : MonoBehaviour
             }
 
         }
-    }
+    }*/
 }
 
