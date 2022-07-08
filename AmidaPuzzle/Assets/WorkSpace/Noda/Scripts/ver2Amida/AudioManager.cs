@@ -2,36 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+namespace noda
 {
-    [SerializeField] private AudioResouces audioResouces = null;
-    private AudioSource audioSource = null;
-    private string currentSe = null;
 
-    private void Start()
+    public class AudioManager : MonoBehaviour
     {
-        audioSource = GetComponent<AudioSource>();
-    }
+        [SerializeField] private AudioResouces audioResouces = null;
+        private AudioSource audioSource = null;
+        private string currentSe = null;
 
-    public void PlayStart(string seName)
-    {
-        AudioClip playSe = audioResouces.FindSeByName(seName);
-
-        if (playSe != null)
+        private void Start()
         {
-            PlaySE(playSe);
-            currentSe = seName;
+            audioSource = GetComponent<AudioSource>();
         }
-    }
 
-    private void PlaySE(AudioClip audioClip)
-    {
-        audioSource.clip = audioClip;
-        audioSource.Play();
-    }
-    public void PlayStop(string seName)
-    {
-        if (currentSe != seName) return;
-        audioSource.Stop();
+        public void PlayStart(string seName)
+        {
+            AudioClip playSe = audioResouces.FindSeByName(seName);
+
+            if (playSe != null)
+            {
+                PlaySE(playSe);
+                currentSe = seName;
+            }
+        }
+
+        private void PlaySE(AudioClip audioClip)
+        {
+            audioSource.clip = audioClip;
+            audioSource.Play();
+        }
+        public void PlayStop(string seName)
+        {
+            if (currentSe != seName) return;
+            audioSource.Stop();
+        }
     }
 }
