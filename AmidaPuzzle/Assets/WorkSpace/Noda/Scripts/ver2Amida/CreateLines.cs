@@ -36,5 +36,10 @@ public class CreateLines : SingletonMonobehaviour<CreateLines>
         {
             line = Instantiate(linePrefab, Vector2.zero, Quaternion.identity, parentObj.parent);
         }
+
+        if (currentCount == maxCount)
+        {
+            this.enabled = false;
+        }
     }
 }

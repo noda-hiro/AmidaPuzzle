@@ -17,7 +17,7 @@ public class PointClass : MonoBehaviour
     private void Awake()
     {
         _currentPos = transform;
-        SettingEndPos();
+       // SettingEndPos();
     }
 
     public float GetDistance(Transform pos)

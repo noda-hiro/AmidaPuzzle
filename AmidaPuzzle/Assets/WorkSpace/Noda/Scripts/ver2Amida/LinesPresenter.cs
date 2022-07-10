@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
-using System.Threading.Tasks;
 
 public class LinesPresenter : MonoBehaviour
 {
@@ -23,13 +22,6 @@ public class LinesPresenter : MonoBehaviour
         OnMouseSecondPush();
         FirstJudgmentChangeBoolState();
         SecondJudgmentChangeBoolState();
-
-        this.UpdateAsObservable().Subscribe(_ =>
-        {
-            this.lineModel.Debugyou();
-
-
-        });
     }
 
     /// <summary>
@@ -42,7 +34,7 @@ public class LinesPresenter : MonoBehaviour
             .Select(_ => Camera.main.ScreenPointToRay(Input.mousePosition))//Cameraから見たマウスポイントに
             .Subscribe(X =>
             {
-                lineModel.InputMouseDownPosRay(X,create);
+                lineModel.InputMouseDownPosRay(X, create);
             })
             .AddTo(this);
     }
@@ -78,7 +70,7 @@ public class LinesPresenter : MonoBehaviour
                 {
                     StopCoroutine(this.lineModel.CreateLine());
                     Destroy(create.line);
-                   // this.lineModel.PosResset();
+                    // this.lineModel.PosResset();
                 }
             });
     }
@@ -98,7 +90,8 @@ public class LinesPresenter : MonoBehaviour
                 {
                     StopCoroutine(this.lineModel.CreateLine());
                     Destroy(create.line);
-                 //   this.lineModel.PosResset();
+                    Debug.Log("aaaawfw");
+                    //   this.lineModel.PosResset();
                 }
             });
     }
