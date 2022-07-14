@@ -121,7 +121,7 @@ public class LinesModel
         var b = firstClickObjLineNum.LineNumber--;
         if (hit.collider.gameObject.tag == "BG" || LINEScript.LineNumber == firstClickObjLineNum.LineNumber + 2
             || LINEScript.LineNumber == firstClickObjLineNum.LineNumber - 2
-            ||LINEScript.LineNumber == firstClickObjLineNum.LineNumber)
+            || LINEScript.LineNumber == firstClickObjLineNum.LineNumber)
         {
             //   PosResset();
             FailureCreateSecondLinePoint();
@@ -236,5 +236,7 @@ public class LinesModel
 
     private float Cross(Vector2 vector1, Vector2 vector2)
         => vector1.x * vector2.y - vector1.y * vector2.x;
+
+   
 
 }

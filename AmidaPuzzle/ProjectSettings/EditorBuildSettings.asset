@@ -5,13 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/WorkSpace/Noda/Scene/TitleScene.unity
-    guid: d32f34bb068b46d429368e3438110807
-  - enabled: 0
-    path: Assets/WorkSpace/Noda/Scene/LineTest.unity
-    guid: 2a0656cc12bdb6f4183d5f55f530f326
   - enabled: 1
     path: Assets/WorkSpace/Noda/Scene/AmidaPuzzle.unity
     guid: 67334d4c9ae3a55408cf59ae4911fb44
+  - enabled: 1
+    path: Assets/WorkSpace/Noda/Scene/AmidaStage1.unity
+    guid: adaddcd7e1abc00468f52ff86d85b336
+  - enabled: 1
+    path: Assets/WorkSpace/Noda/Scene/AmidaStage2.unity
+    guid: ae533b259a1a34c4185746585ee6a4a6
+  - enabled: 1
+    path: Assets/WorkSpace/Noda/Scene/AmidaStage3.unity
+    guid: 319260db889b7d34c8be115e35f60358
+  - enabled: 1
+    path: Assets/WorkSpace/Noda/Scene/AmidaStage4.unity
+    guid: 60e24d91f6eb58646943dbcd0ca1636c
+  - enabled: 1
+    path: Assets/WorkSpace/Noda/Scene/AmidaStage5.unity
+    guid: 3f168c278df83c248905261fdfac57e3
+  - enabled: 1
+    path: Assets/WorkSpace/Noda/Scene/TitleScene.unity
+    guid: d32f34bb068b46d429368e3438110807
+  - enabled: 1
+    path: Assets/WorkSpace/Noda/Scene/SelectStage.unity
+    guid: 68bc12a1eaacb4440b4789e6e8495ae1
   m_configObjects: {}

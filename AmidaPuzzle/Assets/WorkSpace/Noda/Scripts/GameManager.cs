@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     private void GotoGameScene()
     {
-        SceneManager.LoadSceneAsync("LineTest");
+        SceneManager.LoadSceneAsync("SelectStage");
     }
 
     private void ReSetScene()

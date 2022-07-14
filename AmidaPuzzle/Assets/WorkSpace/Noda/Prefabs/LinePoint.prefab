@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3878331037710792602}
   m_Layer: 8
   m_Name: LinePoint
-  m_TagString: Untagged
+  m_TagString: LINEPOINT
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

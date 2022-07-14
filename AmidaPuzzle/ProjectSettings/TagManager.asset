@@ -10,6 +10,8 @@ TagManager:
   - verticalLine
   - BG
   - BlockSprite
+  - LINEPOINT
+  - AMIDA
   layers:
   - Default
   - TransparentFX

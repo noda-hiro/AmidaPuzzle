@@ -17,8 +17,6 @@ public enum BlockType
     PURPLE = 7,
 }
 
-
-
 public class BLOCK : MonoBehaviour
 {
     [SerializeField] private Button btn;
@@ -35,6 +33,7 @@ public class BLOCK : MonoBehaviour
     [SerializeField]
     private int puzzleCount = 0;
     private BlockSpriteChange blockSpriteChange = null;
+    public bool isComplete = false; 
 
     private void Start()
     {
@@ -95,6 +94,7 @@ public class BLOCK : MonoBehaviour
         {
             //todo　コルーチン止まらなかったらごめん
             this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            isComplete = true;
         }
         //ぶつかったのがポイントなら　右か左
         else if (collision.gameObject.layer == 8)

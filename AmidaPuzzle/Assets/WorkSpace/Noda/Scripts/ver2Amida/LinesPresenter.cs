@@ -16,7 +16,7 @@ public class LinesPresenter : MonoBehaviour
     [SerializeField] private List<Transform> endPosList = new List<Transform>();
     [SerializeField] private List<BLOCK> Blocks = new List<BLOCK>();
     [SerializeField] private Button startBtn = null;
-
+    [SerializeField] private Button resetButton = null;
     private void Awake()
     {
         this.lineModel = new LinesModel();
@@ -32,6 +32,7 @@ public class LinesPresenter : MonoBehaviour
         SecondJudgmentChangeBoolState();
         startBtn.onClick.AddListener(() => BlockInit());
         //  BlockInit();
+        resetButton.onClick.AddListener(() => ResetLine());
     }
 
     /// <summary>
@@ -95,6 +96,7 @@ public class LinesPresenter : MonoBehaviour
                 //ÉNÉäÉbÉNÇó£ÇµÇΩÇ∆Ç´LINEÇÃè„Ç»ÇÁê¨å˜
                 if (this.lineModel.LineCurrentTypeCount2.Value == 1)
                 {
+                    create.UpdateLineCountText();
                     this.lineModel.SuccessCreate();
                     LinePointObjectInstance();
                 }
@@ -113,8 +115,8 @@ public class LinesPresenter : MonoBehaviour
         var endposline = Instantiate(linePoint, this.lineModel.endPos, Quaternion.identity);
         startposline.transform.parent = this.lineModel.firstClickLineObj.gameObject.transform;
         endposline.transform.parent = this.lineModel.secondClickLineObj.gameObject.transform;
-        startposline.transform.localPosition = new Vector3(0f,startposline.transform.localPosition.y,startposline.transform.localPosition.z);
-        endposline.transform.localPosition = new Vector3(0f,endposline.transform.localPosition.y,endposline.transform.localPosition.z);
+        startposline.transform.localPosition = new Vector3(0f, startposline.transform.localPosition.y, startposline.transform.localPosition.z);
+        endposline.transform.localPosition = new Vector3(0f, endposline.transform.localPosition.y, endposline.transform.localPosition.z);
         var endPoint = endposline.GetComponent<PointClass>();
         var startPoint = startposline.GetComponent<PointClass>();
 
@@ -139,4 +141,24 @@ public class LinesPresenter : MonoBehaviour
         }
     }
 
+    public void ResetLine()
+    {
+      //  this.lineModel.PosResset();
+        create.currentCount = create.maxCount;
+        create.lineCount = create.maxCount;
+        create.lineCreated.Clear();
+
+        GameObject[] linePoint = GameObject.FindGameObjectsWithTag("LINEPOINT");
+        GameObject[] linePrefab = GameObject.FindGameObjectsWithTag("AMIDA");
+
+        foreach (GameObject point in linePoint)
+        {
+            Destroy(point);
+        }
+        foreach (GameObject line in linePrefab)
+        {
+            Destroy(line);
+        }
+
+    }
 }

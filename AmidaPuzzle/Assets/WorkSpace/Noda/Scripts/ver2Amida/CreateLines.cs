@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CreateLines : SingletonMonobehaviour<CreateLines>
 {
@@ -12,21 +13,16 @@ public class CreateLines : SingletonMonobehaviour<CreateLines>
     public List<GameObject> linePrefabs = new List<GameObject>();
     public List<GameObject> lineCreated = new List<GameObject>();
     [SerializeField] private Transform parentObj;
-    [SerializeField] private int maxCount = 0;
+    [SerializeField] public int maxCount = 0;
     public int currentCount = 0;
+    public int lineCount = 0;
+    [SerializeField] private LinesPresenter linesPresenter;
+    [SerializeField] private Text lineCountText;
     // Start is called before the first frame update
     void Start()
     {
-        //for (int i = 0; i < linePrefabs.Count; i++)
-        //{
-        //    var obj = Instantiate(linePrefab, new Vector2(1500, 0), Quaternion.identity, parentObj.parent);
-        //    verticalLine = obj.GetComponent<VerticalLine>();
-        //    linePrefabs[i] = obj;
-        //    verticalLine.verticalLineNum = i + 1;
-        //    lineList = obj.gameObject.GetComponent<LineRenderer>();
-        //    lineList.SetPosition(0, new Vector2(1500f, 0f));
-        //    lineList.SetPosition(1, new Vector2(1500f, 0f));
-        //}
+        lineCount = maxCount;
+        lineCountText.text = "引く線の数：" + lineCount + "本";
     }
 
 
@@ -42,4 +38,11 @@ public class CreateLines : SingletonMonobehaviour<CreateLines>
             this.enabled = false;
         }
     }
+
+    public void UpdateLineCountText()
+    {
+        lineCount--;
+        lineCountText.text = "引く線の数：" + lineCount + "本";
+    }
+
 }
