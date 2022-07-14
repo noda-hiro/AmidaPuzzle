@@ -14,9 +14,8 @@ public class PointManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var lane0 = _pointLists.Where(x => 0 == x.laneNumber).ToList();
+        var lane0 = _pointLists.Where(x => 0 == x.PointNumber).ToList();
         var nearPoint = _pointLists.Min(x => x.GetDistance(playerPrefab.transform));
-
     }
     
 }

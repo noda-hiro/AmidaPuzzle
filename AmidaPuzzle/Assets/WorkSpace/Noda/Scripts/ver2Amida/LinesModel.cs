@@ -2,18 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-using System.Linq;
-using System;
 
 public class LinesModel
 {
     public IReactiveProperty<int> LineCurrentTypeCount { get; private set; }
     public IReactiveProperty<int> LineCurrentTypeCount2 { get; private set; }
     public IReactiveProperty<bool> isCross { get; private set; }
-    private Vector3 startPos;
-    // private GameObject firstCollisionGameobject;
-    private Vector3 endPos;
-    private float maxDistance = 2f;
+    public Vector3 startPos;
+    public Vector3 endPos;
+    private float maxDistance = 60f;
     private Vector3 screenToWorldPointPosition;
     private int firstPos = 0;
     private int secondPos = 1;
@@ -22,12 +19,14 @@ public class LinesModel
     private int count = 0;
     Vector3 screenPosition;
     Vector3 mousePosition;
-    LINE firstClickObjLineNum = null;
+    public LINE firstClickObjLineNum = null;
+    public LINE endClickObjLineNum = null;
     private float mouseDistance = 100f;
     private List<Vector2> firstPosList = new List<Vector2>();
     private List<Vector2> endPosList = new List<Vector2>();
     private List<List<Vector3>> AllPosList = new List<List<Vector3>>();
     private bool IsCross = false;
+
 
     public LinesModel()
     {
@@ -81,7 +80,6 @@ public class LinesModel
         PosResset();
 
         var hit = Physics2D.Raycast(X.origin, X.direction, maxDistance);
-
         if (hit == false)
         {
             FailureCreateFirstLinePoint();
@@ -91,15 +89,14 @@ public class LinesModel
         else if (hit.collider.gameObject.tag == "verticalLine")
         {
             firstClickObjLineNum = hit.collider.gameObject.GetComponent<LINE>();
-
+            Debug.Log(firstClickObjLineNum+"初めて");
             create.Createline();
             lineren = create.line.GetComponent<LineRenderer>();
-            screenPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1f);
+            screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             mousePosition = Camera.main.ScreenToWorldPoint(screenPosition);
             SuccessCreateFirstLinePoint();
             startPos = mousePosition;
-            lineren.SetPosition(firstPos, new Vector3(startPos.x, startPos.y, 1f));
-
+            lineren.SetPosition(firstPos, startPos);
         }
     }
 
@@ -114,8 +111,8 @@ public class LinesModel
     {
         var hit = Physics2D.Raycast(X.origin, X.direction, maxDistance);
         LINE LINEScript = hit.collider.gameObject.GetComponent<LINE>();
-        var a = firstClickObjLineNum.LineNumber += 1;
-        var b = firstClickObjLineNum.LineNumber -= 1;
+        var a = firstClickObjLineNum.LineNumber++;
+        var b = firstClickObjLineNum.LineNumber--;
         if (hit.collider.gameObject.tag == "BG" || LINEScript.LineNumber == firstClickObjLineNum.LineNumber + 2 || LINEScript.LineNumber == firstClickObjLineNum.LineNumber - 2)
         {
             //   PosResset();
@@ -126,12 +123,15 @@ public class LinesModel
         else if (this.LineCurrentTypeCount.Value == 1 && LINEScript.LineNumber == a
             || this.LineCurrentTypeCount.Value == 1 && LINEScript.LineNumber == b)
         {
+            endClickObjLineNum = hit.collider.gameObject.GetComponent<LINE>();
+            Debug.Log(endClickObjLineNum + "終わり");
             SuccessCreateSecondLinePoint();
             LineCurrentTypeCountNormal();
             LineCurrentTypeCountNormal2();
         }
         else
         {
+            endClickObjLineNum = hit.collider.gameObject.GetComponent<LINE>();
             SuccessCreateSecondLinePoint();
             LineCurrentTypeCountNormal();
             LineCurrentTypeCountNormal2();
@@ -157,9 +157,8 @@ public class LinesModel
             //ここにマウスを追うオブジェクトを若干Distanceを用意する　+*+ -*+
             screenPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f);
             mousePosition = Camera.main.ScreenToWorldPoint(screenPosition);
-            //Debug.LogError(mousePosition.normalized.normalized.x + "ふぉわーど");
-            Debug.LogError(lineren.GetPosition(1).normalized.x);
-            lineren.SetPosition(secondPos, new Vector2(mousePosition.x - (startPos.normalized.x * mousePosition.normalized.x - maxDistance), mousePosition.y));
+            var dir = (mousePosition - startPos).normalized;
+            lineren.SetPosition(secondPos, (mousePosition - (dir * maxDistance)));
             yield return null;
         }
     }
@@ -175,7 +174,7 @@ public class LinesModel
         lineren.SetPosition(secondPos, mousePosition);
         lineren.GetComponent<VerticalLine>().isComprete = true;
 
-
+        endPos = mousePosition;
         firstPosList.Add(lineren.GetPosition(0));
         endPosList.Add(lineren.GetPosition(1));
 
@@ -183,13 +182,8 @@ public class LinesModel
         {
             var isCrossLine = IsCrossing(firstPosList[i], endPosList[i], lineren.GetPosition(0), lineren.GetPosition(1));
             IsCross = isCrossLine;
-            Debug.Log(isCrossLine);
             if (IsCross == true)
             {
-               // firstPosList.Remove(lineren.GetPosition(0));
-                //endPosList.Remove(lineren.GetPosition(1));
-                Debug.Log(firstPosList.Count);
-                Debug.Log(firstPosList.Count);
                 FailureCreateSecondLinePoint();
                 LineCurrentTypeCountNormal();
                 LineCurrentTypeCountNormal2();
@@ -198,19 +192,12 @@ public class LinesModel
         }
         if (IsCross == false)
         {
-
-            Debug.Log("false");
             createLine.lineCreated.Add(lineren.gameObject);
             createLine.linePrefabs.Remove(lineren.gameObject);
             createLine.currentCount++;
             createLine.line = null;
         }
-        //createLine.lineCreated.Add(lineren.gameObject);
-        //createLine.linePrefabs.Remove(lineren.gameObject);
-        //createLine.currentCount++;
-        //createLine.line = null;
     }
-
 
     public void Init()
     {
@@ -227,7 +214,6 @@ public class LinesModel
         screenPosition = Vector2.zero;
         mousePosition = Vector2.zero;
     }
-
 
     private bool IsCrossing(Vector2 startPoint1, Vector2 endPoint1, Vector2 startPoint2, Vector2 endPoint2)
     {

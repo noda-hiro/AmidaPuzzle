@@ -3,21 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum GameStateType
+{
+    STARTPOS,
+    ENDPOS,
+    MOVEPOS,
+}
+
+
 public class PointClass : MonoBehaviour
 {
-    public int laneNumber;
+    public int PointNumber { get; private set; }
     private Transform _currentPos = null;
-    public PointClass _currentPoint;
-    public PointClass _onePoint;
-    public PointClass _twoPoint;
+    public Vector3 _currentPoint;
+    public Vector3 _onePoint;
+    public Vector3 _twoPoint;
     public Transform EndPos { get; set; }
     // public Action BlockInit
 
+    public void Init(int num)
+    {
+        PointNumber = num;
+        Debug.LogError(PointNumber);
+    }
 
     private void Awake()
     {
         _currentPos = transform;
-       // SettingEndPos();
+        // SettingEndPos();
     }
 
     public float GetDistance(Transform pos)
@@ -28,7 +41,7 @@ public class PointClass : MonoBehaviour
 
     private void SettingEndPos()
     {
-        switch (laneNumber)
+        switch (PointNumber)
         {
             case 1:
                 EndPos = GameObject.Find("Firstline_EndPos").gameObject.GetComponent<Transform>();

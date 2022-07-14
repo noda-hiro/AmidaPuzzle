@@ -10,12 +10,12 @@ public class EndPos : MonoBehaviour
     [SerializeField] GameObject failureResultScreen;
     // Start is called before the first frame update
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        var blockObj = collision.gameObject.GetComponent<BlockContorller>().blockNumber;
-        if (blockObj == endPosNumber)
-            goolCount++;
-        else
-            goolCount--;
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    var blockObj = collision.gameObject.GetComponent<BlockContorller>().blockNumber;
+    //    if (blockObj == endPosNumber)
+    //        goolCount++;
+    //    else
+    //        goolCount--;
+    //}
 }
