@@ -9,6 +9,7 @@ TagManager:
   - Line2
   - verticalLine
   - BG
+  - BlockSprite
   layers:
   - Default
   - TransparentFX

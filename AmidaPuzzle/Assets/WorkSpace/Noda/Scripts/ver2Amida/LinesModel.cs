@@ -26,7 +26,8 @@ public class LinesModel
     private List<Vector2> endPosList = new List<Vector2>();
     private List<List<Vector3>> AllPosList = new List<List<Vector3>>();
     private bool IsCross = false;
-
+    public GameObject firstClickLineObj = null;
+    public GameObject secondClickLineObj = null;
 
     public LinesModel()
     {
@@ -77,9 +78,11 @@ public class LinesModel
     /// <param name="X">Rayポイント</param>
     public void InputMouseDownPosRay(Ray X, CreateLines create)
     {
+        firstClickLineObj = null;
         PosResset();
 
         var hit = Physics2D.Raycast(X.origin, X.direction, maxDistance);
+
         if (hit == false)
         {
             FailureCreateFirstLinePoint();
@@ -88,8 +91,9 @@ public class LinesModel
         }
         else if (hit.collider.gameObject.tag == "verticalLine")
         {
+            firstClickLineObj = hit.collider.gameObject;
+            Debug.Log(firstClickLineObj + "firstClickLineObj");
             firstClickObjLineNum = hit.collider.gameObject.GetComponent<LINE>();
-            Debug.Log(firstClickObjLineNum+"初めて");
             create.Createline();
             lineren = create.line.GetComponent<LineRenderer>();
             screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
@@ -109,11 +113,15 @@ public class LinesModel
     /// <param name="X">Rayポイント</param>
     public void InputMouseUpPosRay(Ray X)
     {
+        secondClickLineObj = null;
         var hit = Physics2D.Raycast(X.origin, X.direction, maxDistance);
+        Debug.Log(hit.collider.gameObject);
         LINE LINEScript = hit.collider.gameObject.GetComponent<LINE>();
         var a = firstClickObjLineNum.LineNumber++;
         var b = firstClickObjLineNum.LineNumber--;
-        if (hit.collider.gameObject.tag == "BG" || LINEScript.LineNumber == firstClickObjLineNum.LineNumber + 2 || LINEScript.LineNumber == firstClickObjLineNum.LineNumber - 2)
+        if (hit.collider.gameObject.tag == "BG" || LINEScript.LineNumber == firstClickObjLineNum.LineNumber + 2
+            || LINEScript.LineNumber == firstClickObjLineNum.LineNumber - 2
+            ||LINEScript.LineNumber == firstClickObjLineNum.LineNumber)
         {
             //   PosResset();
             FailureCreateSecondLinePoint();
@@ -124,7 +132,8 @@ public class LinesModel
             || this.LineCurrentTypeCount.Value == 1 && LINEScript.LineNumber == b)
         {
             endClickObjLineNum = hit.collider.gameObject.GetComponent<LINE>();
-            Debug.Log(endClickObjLineNum + "終わり");
+            secondClickLineObj = hit.collider.gameObject;
+            Debug.Log(secondClickLineObj + "secondClickLineObj");
             SuccessCreateSecondLinePoint();
             LineCurrentTypeCountNormal();
             LineCurrentTypeCountNormal2();
@@ -132,6 +141,7 @@ public class LinesModel
         else
         {
             endClickObjLineNum = hit.collider.gameObject.GetComponent<LINE>();
+            secondClickLineObj = hit.collider.gameObject;
             SuccessCreateSecondLinePoint();
             LineCurrentTypeCountNormal();
             LineCurrentTypeCountNormal2();

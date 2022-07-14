@@ -31,7 +31,7 @@ public class LinesPresenter : MonoBehaviour
         FirstJudgmentChangeBoolState();
         SecondJudgmentChangeBoolState();
         startBtn.onClick.AddListener(() => BlockInit());
-      //  BlockInit();
+        //  BlockInit();
     }
 
     /// <summary>
@@ -39,9 +39,10 @@ public class LinesPresenter : MonoBehaviour
     /// </summary>
     private void OnMouseFirstPush()
     {
+        this.lineModel.Init();
         var mouseFirstDown = this.UpdateAsObservable()
             .Where(_ => Input.GetMouseButtonDown(0))
-            .ThrottleFirst(TimeSpan.FromSeconds(1f))//ボタンが押されたら 
+            //.ThrottleFirst(TimeSpan.FromSeconds(1f))//ボタンが押されたら 
             .Select(_ => Camera.main.ScreenPointToRay(Input.mousePosition))//Cameraから見たマウスポイントに
             .Subscribe(X =>
             {
@@ -110,6 +111,10 @@ public class LinesPresenter : MonoBehaviour
     {
         startposline = Instantiate(linePoint, this.lineModel.startPos, Quaternion.identity);
         var endposline = Instantiate(linePoint, this.lineModel.endPos, Quaternion.identity);
+        startposline.transform.parent = this.lineModel.firstClickLineObj.gameObject.transform;
+        endposline.transform.parent = this.lineModel.secondClickLineObj.gameObject.transform;
+        startposline.transform.localPosition = new Vector3(0f,startposline.transform.localPosition.y,startposline.transform.localPosition.z);
+        endposline.transform.localPosition = new Vector3(0f,endposline.transform.localPosition.y,endposline.transform.localPosition.z);
         var endPoint = endposline.GetComponent<PointClass>();
         var startPoint = startposline.GetComponent<PointClass>();
 
@@ -119,8 +124,6 @@ public class LinesPresenter : MonoBehaviour
         endPoint._onePoint = startPoint.transform.position;
         startPoint._twoPoint = endPosList[this.lineModel.firstClickObjLineNum.LineNumber].position;
         endPoint._twoPoint = endPosList[this.lineModel.endClickObjLineNum.LineNumber].position;
-        Debug.Log(endPosList[this.lineModel.firstClickObjLineNum.LineNumber]+"始まる");
-        Debug.Log(endPosList[this.lineModel.endClickObjLineNum.LineNumber]+"終わる");
         startPoint.Init(lineCount);
         lineCount++;
         endPoint.Init(lineCount);
@@ -132,7 +135,7 @@ public class LinesPresenter : MonoBehaviour
         for (int i = 0; i < Blocks.Count; i++)
         {
             Blocks[i].GetComponent<BLOCK>();
-            Blocks[i].StartCoroutine(Blocks[i].MoveToDestinationPoint(endPosList[i].position,0,Blocks[i].isSwitching));
+            Blocks[i].StartCoroutine(Blocks[i].MoveToDestinationPoint(endPosList[i].position, 0, Blocks[i].isSwitching));
         }
     }
 
