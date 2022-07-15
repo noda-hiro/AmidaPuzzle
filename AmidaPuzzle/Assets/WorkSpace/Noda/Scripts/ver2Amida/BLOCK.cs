@@ -6,7 +6,7 @@ using UniRx;
 using UniRx.Triggers;
 using System;
 
-public enum BlockType
+public enum BlockColorType
 {
     RED = 1,
     ORANGE = 2,
@@ -16,11 +16,26 @@ public enum BlockType
     BLUE = 6,
     PURPLE = 7,
 }
+public enum BlockType
+{
+    U_ver1 = 1,
+    U_ver2 = 2,
+    L_ver1 = 3,
+    L_ver2 = 4,
+    I_ver1 = 5,
+    I_ver2 = 6,
+    E_ver1 = 7,
+    E_ver2 = 8,
+    O_ver1 = 9,
+    O_ver2 = 10,
+    T_ver1 = 11,
+    T_ver2 = 12,
+}
 
 public class BLOCK : MonoBehaviour
 {
     [SerializeField] private Button btn;
-    private float moveSpeed = 0.5f;
+    private float moveSpeed = 1f;
     [SerializeField] private PointClass point;
     private int collisionCount = 1;
     [SerializeField] private int myBlockLineNum = -1;
@@ -29,11 +44,12 @@ public class BLOCK : MonoBehaviour
     private int nextNumber = -1;
     private bool isBlockHit = false;
     public bool isSwitching = false;
-    public BlockType blockType = BlockType.RED;
-    [SerializeField]
-    private int puzzleCount = 0;
+    public BlockColorType blockColorType = BlockColorType.RED;
+    public BlockType blockType = BlockType.U_ver1;
+    public int puzzleCount = 0;
     private BlockSpriteChange blockSpriteChange = null;
-    public bool isComplete = false; 
+    public bool isComplete = false;
+    public int finishNum;
 
     private void Start()
     {
@@ -67,15 +83,15 @@ public class BLOCK : MonoBehaviour
         if (collision.tag == "Block")
         {
             var BType = collision.gameObject.GetComponent<BLOCK>();
-            Debug.Log(BType.blockType);
 
-
-            if (blockType == BType.blockType)
+            if (blockColorType == BType.blockColorType)
             {
                 if (puzzleCount < BType.puzzleCount)
                     Destroy(this.gameObject);
                 else
-                    blockSpriteChange.ChangeBlockSprite(this.gameObject, 4);
+                {
+                    BlockCoalescingCalculations(BType.puzzleCount);
+                }
             }
             else
             {
@@ -133,5 +149,35 @@ public class BLOCK : MonoBehaviour
         }
     }
 
+    private void BlockCoalescingCalculations(int collisioPuzzleCount)
+    {
+        var block = (int)blockType;
+
+        if (block == 1 && collisioPuzzleCount == 2
+            || block == 2 && collisioPuzzleCount == 1)
+        {
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            blockSpriteChange.ChangeBlockSprite(this.gameObject, 1);
+            puzzleCount = 10;
+        }
+        else if (block == 2 && collisioPuzzleCount == 3
+            || block == 3 && collisioPuzzleCount == 2)
+        {
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            blockSpriteChange.ChangeBlockSprite(this.gameObject, 2);
+            puzzleCount = 30;
+        }
+        else if (block == 5 && collisioPuzzleCount == 6
+            || block == 6 && collisioPuzzleCount == 5)
+        {
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            blockSpriteChange.ChangeBlockSprite(this.gameObject, 3);
+            puzzleCount = 30;
+        }
+
+    }
 
 }

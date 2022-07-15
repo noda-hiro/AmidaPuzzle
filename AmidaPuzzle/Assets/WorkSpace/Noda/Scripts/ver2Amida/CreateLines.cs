@@ -13,18 +13,22 @@ public class CreateLines : SingletonMonobehaviour<CreateLines>
     public List<GameObject> linePrefabs = new List<GameObject>();
     public List<GameObject> lineCreated = new List<GameObject>();
     [SerializeField] private Transform parentObj;
-    [SerializeField] public int maxCount = 0;
+    [SerializeField] public int maxCount = 4;
     public int currentCount = 0;
     public int lineCount = 0;
     [SerializeField] private LinesPresenter linesPresenter;
     [SerializeField] private Text lineCountText;
-    // Start is called before the first frame update
+
     void Start()
+    {
+        TextInit();
+    }
+
+    public void TextInit()
     {
         lineCount = maxCount;
         lineCountText.text = "ˆø‚­ü‚Ì”F" + lineCount + "–{";
     }
-
 
     public void Createline()
     {
@@ -35,6 +39,7 @@ public class CreateLines : SingletonMonobehaviour<CreateLines>
 
         if (currentCount == maxCount)
         {
+            linesPresenter.enabled = false;
             this.enabled = false;
         }
     }

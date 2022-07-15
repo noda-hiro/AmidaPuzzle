@@ -24,6 +24,7 @@ public class LinesPresenter : MonoBehaviour
 
     void Start()
     {
+        startBtn.interactable = false;
         this.lineModel.PosResset();
         this.lineModel.Init();
         OnMouseFirstPush();
@@ -99,6 +100,10 @@ public class LinesPresenter : MonoBehaviour
                     create.UpdateLineCountText();
                     this.lineModel.SuccessCreate();
                     LinePointObjectInstance();
+                    if (create.currentCount == create.maxCount)
+                    {
+                        startBtn.interactable = true;
+                    }
                 }
                 //ƒNƒŠƒbƒN‚ğ—£‚µ‚½‚Æ‚«LINE‚Ìã‚Å‚Í‚È‚¢ê‡¸”s
                 else if (this.lineModel.LineCurrentTypeCount2.Value == -1)
@@ -139,11 +144,12 @@ public class LinesPresenter : MonoBehaviour
             Blocks[i].GetComponent<BLOCK>();
             Blocks[i].StartCoroutine(Blocks[i].MoveToDestinationPoint(endPosList[i].position, 0, Blocks[i].isSwitching));
         }
+        startBtn.interactable = false;
     }
 
     public void ResetLine()
     {
-      //  this.lineModel.PosResset();
+        //  this.lineModel.PosResset();
         create.currentCount = create.maxCount;
         create.lineCount = create.maxCount;
         create.lineCreated.Clear();
@@ -159,6 +165,5 @@ public class LinesPresenter : MonoBehaviour
         {
             Destroy(line);
         }
-
     }
 }

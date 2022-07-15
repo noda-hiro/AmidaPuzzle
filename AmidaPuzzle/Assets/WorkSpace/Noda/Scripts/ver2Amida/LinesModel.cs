@@ -92,7 +92,6 @@ public class LinesModel
         else if (hit.collider.gameObject.tag == "verticalLine")
         {
             firstClickLineObj = hit.collider.gameObject;
-            Debug.Log(firstClickLineObj + "firstClickLineObj");
             firstClickObjLineNum = hit.collider.gameObject.GetComponent<LINE>();
             create.Createline();
             lineren = create.line.GetComponent<LineRenderer>();
@@ -115,7 +114,6 @@ public class LinesModel
     {
         secondClickLineObj = null;
         var hit = Physics2D.Raycast(X.origin, X.direction, maxDistance);
-        Debug.Log(hit.collider.gameObject);
         LINE LINEScript = hit.collider.gameObject.GetComponent<LINE>();
         var a = firstClickObjLineNum.LineNumber++;
         var b = firstClickObjLineNum.LineNumber--;
@@ -133,7 +131,6 @@ public class LinesModel
         {
             endClickObjLineNum = hit.collider.gameObject.GetComponent<LINE>();
             secondClickLineObj = hit.collider.gameObject;
-            Debug.Log(secondClickLineObj + "secondClickLineObj");
             SuccessCreateSecondLinePoint();
             LineCurrentTypeCountNormal();
             LineCurrentTypeCountNormal2();
@@ -236,7 +233,5 @@ public class LinesModel
 
     private float Cross(Vector2 vector1, Vector2 vector2)
         => vector1.x * vector2.y - vector1.y * vector2.x;
-
-   
 
 }

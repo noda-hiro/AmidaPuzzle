@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndPos : MonoBehaviour
+public class EndPosition : MonoBehaviour
 {
     [SerializeField] private int endPosNumber = 0;
     public int goolCount = 0;

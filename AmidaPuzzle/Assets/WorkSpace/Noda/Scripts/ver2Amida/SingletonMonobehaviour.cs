@@ -35,6 +35,6 @@ public abstract class SingletonMonobehaviour<T> : MonoBehaviour where T : MonoBe
                 "アタッチされているGameObjectは" + Instance.gameObject.name + "です");
             return;
         }
-        DontDestroyOnLoad(this.gameObject);
+       // DontDestroyOnLoad(this.gameObject);
     }
 }
