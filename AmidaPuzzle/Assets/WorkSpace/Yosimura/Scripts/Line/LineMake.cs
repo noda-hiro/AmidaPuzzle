@@ -40,23 +40,17 @@ public class LineMake : MonoBehaviour
 
         lineRenderer.SetPosition(1, pos);
 
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-
-
         // Debug.Log("ENTER");
         if (isTouch)
         {
 
             if (Input.GetMouseButton(0))
             {
-
 
                 //このラインオブジェクトを、位置はカメラ１０ｍ、回転はカメラと同じようになるようキープさせる
                 transform.position = mainCamera.transform.position + mainCamera.transform.forward * 10;
@@ -83,7 +77,6 @@ public class LineMake : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//RAYを生成
                 RaycastHit2D hit = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction); // Rayを投射
 
-
                  if (hit.collider == null)
 
                     {
@@ -93,13 +86,9 @@ public class LineMake : MonoBehaviour
                     }
              }
 
-
      
         }
 
     }
-        
-        
-
 
 }
