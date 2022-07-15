@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private Button startBtn;
+   /* [SerializeField] private Button startBtn;
     [SerializeField] private Button reStartBtn;
     [SerializeField] private Button reMenuBtn;
     // Start is called before the first frame update
@@ -34,5 +34,5 @@ public class GameManager : MonoBehaviour
     private void ReMenuScene()
     {
         SceneManager.LoadSceneAsync("TitleScene");
-    }
+    }*/
 }
