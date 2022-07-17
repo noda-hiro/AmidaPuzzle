@@ -50,6 +50,7 @@ public class BLOCK : MonoBehaviour
     private BlockSpriteChange blockSpriteChange = null;
     public bool isComplete = false;
     public int finishNum;
+    [SerializeField] private EndPosController posController;
 
     private void Start()
     {
@@ -87,7 +88,10 @@ public class BLOCK : MonoBehaviour
             if (blockColorType == BType.blockColorType)
             {
                 if (puzzleCount < BType.puzzleCount)
+                {
+                    posController.blockList.Remove(this);
                     Destroy(this.gameObject);
+                }
                 else
                 {
                     BlockCoalescingCalculations(BType.puzzleCount);
@@ -109,7 +113,7 @@ public class BLOCK : MonoBehaviour
         else if (collision.gameObject.layer == 11)
         {
             //todo　コルーチン止まらなかったらごめん
-            this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            // this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             isComplete = true;
         }
         //ぶつかったのがポイントなら　右か左

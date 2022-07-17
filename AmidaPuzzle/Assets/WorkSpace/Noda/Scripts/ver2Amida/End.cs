@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using System.Linq;
+
 public class End : MonoBehaviour
 {
     enum EndPosType
@@ -33,7 +35,7 @@ public class End : MonoBehaviour
     [SerializeField]
     private EndPosBlockColorType endPosBlockColor = EndPosBlockColorType.BLUE;
     public int nowClearBlockCount { get; private set; }
-    [SerializeField] private List<GameObject> prefabList = new List<GameObject>();
+    [SerializeField] public List<GameObject> prefabList = new List<GameObject>();
     [SerializeField] private EndPosController posController = null;
 
     private void Start()
@@ -44,13 +46,18 @@ public class End : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var block = collision.gameObject.GetComponent<BLOCK>();
-
-        if (block.puzzleCount == (int)posType
-            && (int)endPosBlockColor == (int)block.blockColorType)
+        if (posController.blockList.All(i => i.isComplete == true))
         {
-            isClear = true;
-            nowClearBlockCount++;
-            posController.nowClearBlockCount++;
+            if (block.puzzleCount == (int)posType
+                && (int)endPosBlockColor == (int)block.blockColorType)
+            {
+                isClear = true;
+                posController.clearPanel.SetActive(true);
+            }
+            else if(posController.isClearList.All(i=>i.isClear!=true))
+            {
+                posController.failurePanel.SetActive(true);
+            }
         }
     }
 }

@@ -7,12 +7,15 @@ using UniRx.Triggers;
 
 public class EndPosController : MonoBehaviour
 {
-    [SerializeField] private List<End> isClearList = new List<End>();
-    [SerializeField] private GameObject clearPanel = null;
-    [SerializeField] private GameObject failurePanel = null;
+    public List<End> isClearList = new List<End>();
+    public GameObject clearPanel = null;
+    public GameObject failurePanel = null;
     [SerializeField] private List<Transform> prefabPos = new List<Transform>();
+    public List<BLOCK> blockList = new List<BLOCK>();
     private int count = 0;
-    public int nowClearBlockCount = 0;
+    public int nowClearBlockCount = -1;
+    public int clearPointCount = 2;
+    public int currentNum = 0;
 
     private void Start()
     {
@@ -23,7 +26,7 @@ public class EndPosController : MonoBehaviour
     }
     private void Update()
     {
-        CheckClear();
+        //CheckClear();
     }
 
     public void CheckClear()
