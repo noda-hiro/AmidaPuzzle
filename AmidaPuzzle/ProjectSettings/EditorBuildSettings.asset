@@ -12,21 +12,15 @@ EditorBuildSettings:
     path: Assets/WorkSpace/Noda/Scene/SelectStage.unity
     guid: 68bc12a1eaacb4440b4789e6e8495ae1
   - enabled: 1
-    path: Assets/WorkSpace/Noda/Scene/AmidaStageOne.unity
-    guid: 5e19d85414b2503449abe66ed6cf9a25
+    path: Assets/WorkSpace/Noda/Scene/AmidaStage1.unity
+    guid: eee94882340aa714abf8f3cf178ef830
   - enabled: 1
-    path: Assets/WorkSpace/Noda/Scene/AmidaStageTwo.unity
-    guid: 390d225dd8b309e47ac293e917335055
+    path: Assets/WorkSpace/Noda/Scene/AmidaStage2.unity
+    guid: 41eb5e74f5873104c896ee1cd00fd07c
   - enabled: 1
-    path: Assets/WorkSpace/Noda/Scene/AmidaStageThree.unity
-    guid: b9ecfbdf0de94a046a3d6e98240c2701
-  - enabled: 1
-    path: Assets/WorkSpace/Noda/Scene/AmidaStageFour.unity
-    guid: 8254978cbac63de4583d9094b7ffd74f
-  - enabled: 1
-    path: Assets/WorkSpace/Noda/Scene/AmidaStageFive.unity
-    guid: 2429b189cc48e7c42a1d7e96cc28d90d
-  - enabled: 1
+    path: Assets/WorkSpace/Noda/Scene/AmidaStage3.unity
+    guid: 881bb5df9331f3143bc720ecdbd1f6b5
+  - enabled: 0
     path: Assets/WorkSpace/Noda/Scene/AmidaPuzzle.unity
     guid: 67334d4c9ae3a55408cf59ae4911fb44
   m_configObjects: {}

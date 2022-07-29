@@ -50,4 +50,12 @@ public class CreateLines : SingletonMonobehaviour<CreateLines>
         lineCountText.text = "ˆø‚­ü‚Ì”F" + lineCount + "–{";
     }
 
+    public void ReMoveLine()
+    {
+        for (int i = 0; i < lineCreated.Count; i++)
+        {
+            Destroy(lineCreated[i].gameObject);
+        }
+    }
+
 }

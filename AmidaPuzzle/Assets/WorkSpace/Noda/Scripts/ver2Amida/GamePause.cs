@@ -9,13 +9,15 @@ public class GamePause : MonoBehaviour
     [SerializeField] private Button pauseButton = null;
     [SerializeField] private Button returnButton = null;
     [SerializeField] private Button titleButton = null;
+    [SerializeField] private Button reStartButton = null;
     [SerializeField] private GameObject panel;
     // Start is called before the first frame update
     void Start()
     {
         pauseButton.onClick.AddListener(() => PauseGame());
         returnButton.onClick.AddListener(() => ReturnGame());
-        titleButton.onClick.AddListener(() => SceneManager.LoadScene("SelectStage"));
+        titleButton.onClick.AddListener(() => ReturnSelectScreen());
+        reStartButton.onClick.AddListener(() => ReStartGame());
     }
 
     private void PauseGame()
@@ -28,6 +30,18 @@ public class GamePause : MonoBehaviour
     {
         panel.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    private void ReturnSelectScreen()
+    {
+        ReturnGame();
+        SceneManager.LoadScene("SelectStage");
+    }
+
+    private void ReStartGame()
+    {
+        ReturnGame();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }

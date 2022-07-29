@@ -35,7 +35,7 @@ public enum BlockType
 public class BLOCK : MonoBehaviour
 {
     [SerializeField] private Button btn;
-    private float moveSpeed = 1f;
+    [SerializeField]private float moveSpeed = 5f;
     [SerializeField] private PointClass point;
     private int collisionCount = 1;
     [SerializeField] private int myBlockLineNum = -1;
@@ -113,8 +113,8 @@ public class BLOCK : MonoBehaviour
         else if (collision.gameObject.layer == 11)
         {
             //todo　コルーチン止まらなかったらごめん
-            // this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            isComplete = true;
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            //isComplete = true;
         }
         //ぶつかったのがポイントなら　右か左
         else if (collision.gameObject.layer == 8)
@@ -180,6 +180,14 @@ public class BLOCK : MonoBehaviour
             this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
             blockSpriteChange.ChangeBlockSprite(this.gameObject, 3);
             puzzleCount = 30;
+        }
+        else if (block == 7 && collisioPuzzleCount == 8
+           || block == 8 && collisioPuzzleCount == 7)
+        {
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            blockSpriteChange.ChangeBlockSprite(this.gameObject, 6);
+            puzzleCount = 60;
         }
 
     }

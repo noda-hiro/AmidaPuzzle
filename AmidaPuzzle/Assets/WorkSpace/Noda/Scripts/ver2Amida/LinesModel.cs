@@ -10,7 +10,7 @@ public class LinesModel
     public IReactiveProperty<bool> isCross { get; private set; }
     public Vector3 startPos;
     public Vector3 endPos;
-    private float maxDistance = 60f;
+    private float maxDistance = 0f;
     private Vector3 screenToWorldPointPosition;
     private int firstPos = 0;
     private int secondPos = 1;
@@ -194,6 +194,8 @@ public class LinesModel
                 FailureCreateSecondLinePoint();
                 LineCurrentTypeCountNormal();
                 LineCurrentTypeCountNormal2();
+                var firstPosItem = firstPosList.LastIndexOf(firstPosList[i]);
+                var secondPosItem = endPosList.LastIndexOf(endPosList[i]);
                 break;
             }
         }

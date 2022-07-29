@@ -37,25 +37,44 @@ public class End : MonoBehaviour
     public int nowClearBlockCount { get; private set; }
     [SerializeField] public List<GameObject> prefabList = new List<GameObject>();
     [SerializeField] private EndPosController posController = null;
+    private int count;
 
     private void Start()
     {
         nowClearBlockCount = 0;
+        count = 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var block = collision.gameObject.GetComponent<BLOCK>();
+
+        block.isComplete = true;
+
+        if (block.puzzleCount == (int)posType
+              && (int)endPosBlockColor == (int)block.blockColorType)
+        {
+            isClear = true;
+        }
+
         if (posController.blockList.All(i => i.isComplete == true))
         {
-            if (block.puzzleCount == (int)posType
-                && (int)endPosBlockColor == (int)block.blockColorType)
+            Debug.Log("‚¨‚í‚è");
+            if (posController.isClearList.All(i => i.isClear == true))
             {
-                isClear = true;
+                posController.createLines.ReMoveLine();
                 posController.clearPanel.SetActive(true);
+                return;
             }
-            else if(posController.isClearList.All(i=>i.isClear!=true))
+            else if (posController.isClearList.All(i => i.isClear != true))
             {
+                posController.createLines.ReMoveLine();
+                posController.failurePanel.SetActive(true);
+                return;
+            }
+            else if (posController.isClearList[0].isClear==true&& posController.isClearList[1].isClear == false|| posController.isClearList[0].isClear == false&& posController.isClearList[1].isClear == true)
+            {
+                posController.createLines.ReMoveLine();
                 posController.failurePanel.SetActive(true);
             }
         }

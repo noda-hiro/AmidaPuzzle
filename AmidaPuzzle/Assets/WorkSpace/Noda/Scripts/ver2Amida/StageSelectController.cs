@@ -16,11 +16,11 @@ public class StageSelectController : MonoBehaviour
     }
     private void StageBtnSetting()
     {
-        ButtonList[0].onClick.AddListener(() => SceneManager.LoadScene("AmidaStageOne"));
-        ButtonList[1].onClick.AddListener(() => SceneManager.LoadScene("AmidaStageTwo"));
-        ButtonList[2].onClick.AddListener(() => SceneManager.LoadScene("AmidaStageThree"));
-        ButtonList[3].onClick.AddListener(() => SceneManager.LoadScene("AmidaStageFour"));
-        ButtonList[4].onClick.AddListener(() => SceneManager.LoadScene("AmidaStageFive"));
+        ButtonList[0].onClick.AddListener(() => SceneManager.LoadScene("AmidaStage1"));
+        ButtonList[1].onClick.AddListener(() => SceneManager.LoadScene("AmidaStage2"));
+        ButtonList[2].onClick.AddListener(() => SceneManager.LoadScene("AmidaStage3"));
+        //ButtonList[3].onClick.AddListener(() => SceneManager.LoadScene("AmidaStageFour"));
+        //ButtonList[4].onClick.AddListener(() => SceneManager.LoadScene("AmidaStageFive"));
         ButtonList[5].onClick.AddListener(() => SceneManager.LoadScene("AmidaPuzzle"));
     }
 

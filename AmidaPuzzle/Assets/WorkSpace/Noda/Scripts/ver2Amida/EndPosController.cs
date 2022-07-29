@@ -16,6 +16,7 @@ public class EndPosController : MonoBehaviour
     public int nowClearBlockCount = -1;
     public int clearPointCount = 2;
     public int currentNum = 0;
+    [SerializeField] public CreateLines createLines;
 
     private void Start()
     {

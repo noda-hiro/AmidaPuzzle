@@ -24,7 +24,6 @@ public class PointClass : MonoBehaviour
     public void Init(int num)
     {
         PointNumber = num;
-        Debug.LogError(PointNumber);
     }
 
     private void Awake()
