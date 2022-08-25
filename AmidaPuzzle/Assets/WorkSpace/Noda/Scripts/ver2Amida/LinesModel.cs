@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using System.Linq;
 
-public class LinesModel
+public class LinesModel : MonoBehaviour
 {
     public IReactiveProperty<int> LineCurrentTypeCount { get; private set; }
     public IReactiveProperty<int> LineCurrentTypeCount2 { get; private set; }
@@ -170,11 +171,12 @@ public class LinesModel
         }
     }
 
+   
     /// <summary>
     /// çÏê¨ê¨å˜éû
     /// </summary>
     /// <param name="line"></param>
-    public void SuccessCreate()
+    public bool SuccessCreate(List<GameObject> startList, List<GameObject> endList)
     {
         screenPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f);
         mousePosition = Camera.main.ScreenToWorldPoint(screenPosition);
@@ -196,16 +198,22 @@ public class LinesModel
                 LineCurrentTypeCountNormal2();
                 var firstPosItem = firstPosList.LastIndexOf(firstPosList[i]);
                 var secondPosItem = endPosList.LastIndexOf(endPosList[i]);
+               // Destroy(startList.Last().gameObject);
+               // Destroy(endList.Last().gameObject);
+               // startList.RemoveAt(startList.Count - 1);
+               // endList.RemoveAt(endList.Count - 1);
                 break;
             }
         }
         if (IsCross == false)
         {
+            Debug.Log("false");
             createLine.lineCreated.Add(lineren.gameObject);
             createLine.linePrefabs.Remove(lineren.gameObject);
             createLine.currentCount++;
             createLine.line = null;
         }
+        return IsCross;
     }
 
     public void Init()

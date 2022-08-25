@@ -17,6 +17,12 @@ public class LinesPresenter : MonoBehaviour
     [SerializeField] private List<BLOCK> Blocks = new List<BLOCK>();
     [SerializeField] private Button startBtn = null;
     [SerializeField] private Button resetButton = null;
+
+    [SerializeField]
+    private List<GameObject> startPosObjectList;
+    [SerializeField]
+    private List<GameObject> endPosObjectList;
+
     private void Awake()
     {
         this.lineModel = new LinesModel();
@@ -97,9 +103,14 @@ public class LinesPresenter : MonoBehaviour
                 //ÉNÉäÉbÉNÇó£ÇµÇΩÇ∆Ç´LINEÇÃè„Ç»ÇÁê¨å˜
                 if (this.lineModel.LineCurrentTypeCount2.Value == 1)
                 {
-                    create.UpdateLineCountText();
-                    this.lineModel.SuccessCreate();
-                    LinePointObjectInstance();
+                    var isCross = this.lineModel.SuccessCreate(startPosObjectList, endPosObjectList);
+
+                    if (isCross == false)
+                    {
+                        LinePointObjectInstance();
+                        create.UpdateLineCountText();
+                    }
+
                     if (create.currentCount == create.maxCount)
                     {
                         startBtn.interactable = true;
@@ -109,6 +120,8 @@ public class LinesPresenter : MonoBehaviour
                 else if (this.lineModel.LineCurrentTypeCount2.Value == -1)
                 {
                     StopCoroutine(this.lineModel.CreateLine());
+                    // Destroy(endPosObjectList[endPosObjectList.Count - 1]);
+                    // Destroy(startPosObjectList[startPosObjectList.Count - 1]);
                     Destroy(create.line);
                     //   this.lineModel.PosResset();
                 }
@@ -118,6 +131,8 @@ public class LinesPresenter : MonoBehaviour
     {
         startposline = Instantiate(linePoint, this.lineModel.startPos, Quaternion.identity);
         var endposline = Instantiate(linePoint, this.lineModel.endPos, Quaternion.identity);
+        startPosObjectList.Add(startposline);
+        endPosObjectList.Add(endposline);
         startposline.transform.parent = this.lineModel.firstClickLineObj.gameObject.transform;
         endposline.transform.parent = this.lineModel.secondClickLineObj.gameObject.transform;
         startposline.transform.localPosition = new Vector3(0f, startposline.transform.localPosition.y, startposline.transform.localPosition.z);
