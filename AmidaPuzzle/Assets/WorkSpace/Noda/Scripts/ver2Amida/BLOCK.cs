@@ -35,7 +35,7 @@ public enum BlockType
 public class BLOCK : MonoBehaviour
 {
     [SerializeField] private Button btn;
-    [SerializeField]private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private PointClass point;
     private int collisionCount = 1;
     [SerializeField] private int myBlockLineNum = -1;
@@ -50,6 +50,8 @@ public class BLOCK : MonoBehaviour
     private BlockSpriteChange blockSpriteChange = null;
     public bool isComplete = false;
     public int finishNum;
+    [SerializeField]
+    private bool onTheLine;
     [SerializeField] private EndPosController posController;
 
     private void Start()
@@ -84,9 +86,9 @@ public class BLOCK : MonoBehaviour
         if (collision.tag == "Block")
         {
             var BType = collision.gameObject.GetComponent<BLOCK>();
-
             if (blockColorType == BType.blockColorType)
             {
+                Debug.Log("あたり");
                 if (puzzleCount < BType.puzzleCount)
                 {
                     posController.blockList.Remove(this);
@@ -95,19 +97,23 @@ public class BLOCK : MonoBehaviour
                 else
                 {
                     BlockCoalescingCalculations(BType.puzzleCount);
+                    Debug.Log("aifa");
                 }
             }
-            else
+            else if(blockColorType != BType.blockColorType&&onTheLine==false)
             {
                 isSwitching = !isSwitching;
                 isInversion = true;
+
                 StartCoroutine(MoveToDestinationPoint(pointClass._currentPoint, 0, isSwitching));
+                Debug.Log(pointClass._currentPoint);
             }
         }
         //ぶつかったのがポイントでブロックのタイプが逆向きなら ↓
-        else if (collisionCount == -1)
+        else if (collisionCount == -1 && onTheLine == false)
         {
             StartCoroutine(MoveToDestinationPoint(collsionPoint._twoPoint, 0, isSwitching));
+            Debug.Log("反転当たり");
         }
         //ぶつかったのがゴールなら　ゴール
         else if (collision.gameObject.layer == 11)
@@ -130,11 +136,15 @@ public class BLOCK : MonoBehaviour
                 {
                     StartCoroutine(MoveToDestinationPoint(nextPos._twoPoint, 0, isSwitching));
                     isInversion = false;
+                    onTheLine = true;
+                    Debug.Log("1"+nextPos._twoPoint);
                 }
                 else
                 {
                     nextNumber = nextPos.PointNumber + 1;
                     StartCoroutine(MoveToDestinationPoint(nextPos._onePoint, 0, isSwitching));
+                    onTheLine = false;
+                    Debug.Log("2"+nextPos._onePoint);
                 }
             }
             else if (hitNum % 2 != 0)
@@ -143,11 +153,15 @@ public class BLOCK : MonoBehaviour
                 {
                     StartCoroutine(MoveToDestinationPoint(nextPos._twoPoint, 0, isSwitching));
                     isInversion = false;
+                    onTheLine = true;
+                    Debug.Log("3"+nextPos._twoPoint);
                 }
                 else
                 {
                     nextNumber = nextPos.PointNumber - 1;
                     StartCoroutine(MoveToDestinationPoint(nextPos._onePoint, 0, isSwitching));
+                    onTheLine = false;
+                    Debug.Log("4"+nextPos._onePoint);
                 }
             }
         }

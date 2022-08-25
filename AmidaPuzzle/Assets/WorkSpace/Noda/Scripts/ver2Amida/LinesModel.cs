@@ -207,7 +207,6 @@ public class LinesModel : MonoBehaviour
         }
         if (IsCross == false)
         {
-            Debug.Log("false");
             createLine.lineCreated.Add(lineren.gameObject);
             createLine.linePrefabs.Remove(lineren.gameObject);
             createLine.currentCount++;
