@@ -35,7 +35,7 @@ public enum BlockType
 public class BLOCK : MonoBehaviour
 {
     [SerializeField] private Button btn;
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 0.5f;
     [SerializeField] private PointClass point;
     private int collisionCount = 1;
     [SerializeField] private int myBlockLineNum = -1;
@@ -53,26 +53,48 @@ public class BLOCK : MonoBehaviour
     [SerializeField]
     private bool onTheLine;
     [SerializeField] private EndPosController posController;
+    private bool isStack;
 
     private void Start()
     {
         blockSpriteChange = GameObject.FindWithTag("BlockSprite").GetComponent<BlockSpriteChange>();
     }
 
-    public IEnumerator MoveToDestinationPoint(Vector3 nextPos, int count, bool istemp)
+    public IEnumerator MoveToDestinationPoint(Vector3 nextPos, int count, bool istemp, Vector3 vector/* PointClass _justInCasePintClass*/)
     {
         while (true)
         {
-            if (this.transform.position == nextPos)
+            if (this.transform.position == nextPos && isComplete == false)
             {
+                //TODO エラーの原因ここ
+                // if (istemp)
+                // {
+                var collsion = this.gameObject.GetComponent<BoxCollider2D>();
+                collsion.enabled = false;
+                yield return new WaitForSeconds(0.1f);
+                collsion.enabled = true;
                 yield break;
+                //}
+                //else
+                //{
+                //   transform.position = Vector2.MoveTowards(this.transform.position, _justInCasePintClass._twoPoint, moveSpeed);
+                // Debug.LogError(this.transform.position);
+
+                //}
+                // Debug.LogError(nextPos);
+                //  Debug.LogError(this.transform.position);
+                //continue;
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(this.transform.position, nextPos, moveSpeed);
             }
             if (istemp != isSwitching)
             {
                 yield break;
             }
-            transform.position = Vector2.MoveTowards(this.transform.position, nextPos, moveSpeed);
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSeconds(0.01f);
+
         }
     }
 
@@ -81,14 +103,13 @@ public class BLOCK : MonoBehaviour
     private bool isInversion = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var collsionPoint = collision.gameObject.GetComponent<PointClass>();
-
+        Debug.LogError("当たった" + collision);
+        // var collsionPoint = collision.gameObject.GetComponent<PointClass>();
         if (collision.tag == "Block")
         {
             var BType = collision.gameObject.GetComponent<BLOCK>();
-            if (blockColorType == BType.blockColorType)
+            if (blockColorType == BType.blockColorType && onTheLine == false && BType.onTheLine == false)
             {
-                Debug.Log("あたり");
                 if (puzzleCount < BType.puzzleCount)
                 {
                     posController.blockList.Remove(this);
@@ -97,24 +118,20 @@ public class BLOCK : MonoBehaviour
                 else
                 {
                     BlockCoalescingCalculations(BType.puzzleCount);
-                    Debug.Log("aifa");
                 }
             }
-            else if(blockColorType != BType.blockColorType&&onTheLine==false)
+            else
             {
                 isSwitching = !isSwitching;
                 isInversion = true;
-
-                StartCoroutine(MoveToDestinationPoint(pointClass._currentPoint, 0, isSwitching));
-                Debug.Log(pointClass._currentPoint);
+                StartCoroutine(MoveToDestinationPoint(pointClass._currentPoint, 0, isSwitching, pointClass._twoPoint));
             }
         }
         //ぶつかったのがポイントでブロックのタイプが逆向きなら ↓
-        else if (collisionCount == -1 && onTheLine == false)
-        {
-            StartCoroutine(MoveToDestinationPoint(collsionPoint._twoPoint, 0, isSwitching));
-            Debug.Log("反転当たり");
-        }
+        //else if (collisionCount == -1)
+        //{
+        //    StartCoroutine(MoveToDestinationPoint(collsionPoint._twoPoint, 0, isSwitching));
+        //}
         //ぶつかったのがゴールなら　ゴール
         else if (collision.gameObject.layer == 11)
         {
@@ -134,34 +151,32 @@ public class BLOCK : MonoBehaviour
             {
                 if (hitNum == nextNumber || isInversion)
                 {
-                    StartCoroutine(MoveToDestinationPoint(nextPos._twoPoint, 0, isSwitching));
+                    StartCoroutine(MoveToDestinationPoint(nextPos._twoPoint, 0, isSwitching, nextPos._twoPoint));
                     isInversion = false;
                     onTheLine = true;
-                    Debug.Log("1"+nextPos._twoPoint);
                 }
-                else
+                else if (isInversion == false)
                 {
                     nextNumber = nextPos.PointNumber + 1;
-                    StartCoroutine(MoveToDestinationPoint(nextPos._onePoint, 0, isSwitching));
+                    StartCoroutine(MoveToDestinationPoint(nextPos._onePoint, 0, isSwitching, nextPos._onePoint));
                     onTheLine = false;
-                    Debug.Log("2"+nextPos._onePoint);
+                    isInversion = true;
                 }
             }
             else if (hitNum % 2 != 0)
             {
                 if (nextPos.PointNumber == nextNumber || isInversion)
                 {
-                    StartCoroutine(MoveToDestinationPoint(nextPos._twoPoint, 0, isSwitching));
+                    StartCoroutine(MoveToDestinationPoint(nextPos._twoPoint, 0, isSwitching, nextPos._twoPoint));
                     isInversion = false;
                     onTheLine = true;
-                    Debug.Log("3"+nextPos._twoPoint);
                 }
-                else
+                else if (isInversion == false)
                 {
                     nextNumber = nextPos.PointNumber - 1;
-                    StartCoroutine(MoveToDestinationPoint(nextPos._onePoint, 0, isSwitching));
+                    StartCoroutine(MoveToDestinationPoint(nextPos._onePoint, 0, isSwitching, nextPos._onePoint));
                     onTheLine = false;
-                    Debug.Log("4"+nextPos._onePoint);
+                    isInversion = true;
                 }
             }
         }

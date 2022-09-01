@@ -17,6 +17,7 @@ public class LinesPresenter : MonoBehaviour
     [SerializeField] private List<BLOCK> Blocks = new List<BLOCK>();
     [SerializeField] private Button startBtn = null;
     [SerializeField] private Button resetButton = null;
+    [SerializeField] private PointClass[] pointClass;
 
     [SerializeField]
     private List<GameObject> startPosObjectList;
@@ -157,7 +158,7 @@ public class LinesPresenter : MonoBehaviour
         for (int i = 0; i < Blocks.Count; i++)
         {
             Blocks[i].GetComponent<BLOCK>();
-            Blocks[i].StartCoroutine(Blocks[i].MoveToDestinationPoint(endPosList[i].position, 0, Blocks[i].isSwitching));
+            Blocks[i].StartCoroutine(Blocks[i].MoveToDestinationPoint(endPosList[i].position, 0, Blocks[i].isSwitching,pointClass[i]._twoPoint));
         }
         startBtn.interactable = false;
     }
