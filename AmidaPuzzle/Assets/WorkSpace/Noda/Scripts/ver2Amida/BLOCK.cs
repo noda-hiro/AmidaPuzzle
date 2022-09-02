@@ -71,7 +71,7 @@ public class BLOCK : MonoBehaviour
                 // {
                 var collsion = this.gameObject.GetComponent<BoxCollider2D>();
                 collsion.enabled = false;
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.2f);
                 collsion.enabled = true;
                 yield break;
                 //}
@@ -103,7 +103,6 @@ public class BLOCK : MonoBehaviour
     private bool isInversion = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.LogError("“–‚½‚Á‚½" + collision);
         // var collsionPoint = collision.gameObject.GetComponent<PointClass>();
         if (collision.tag == "Block")
         {
