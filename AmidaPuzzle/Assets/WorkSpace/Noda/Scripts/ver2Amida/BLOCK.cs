@@ -35,7 +35,7 @@ public enum BlockType
 public class BLOCK : MonoBehaviour
 {
     [SerializeField] private Button btn;
-    [SerializeField] private float moveSpeed = 0.5f;
+    private float moveSpeed = 300f;
     [SerializeField] private PointClass point;
     private int collisionCount = 1;
     [SerializeField] private int myBlockLineNum = -1;
@@ -87,14 +87,13 @@ public class BLOCK : MonoBehaviour
             }
             else
             {
-                transform.position = Vector2.MoveTowards(this.transform.position, nextPos, moveSpeed);
+                transform.position = Vector2.MoveTowards(this.transform.position, nextPos, moveSpeed * Time.deltaTime);
             }
             if (istemp != isSwitching)
             {
                 yield break;
             }
-            yield return new WaitForSeconds(0.01f);
-
+            yield return new WaitForSeconds(0.001f);
         }
     }
 
