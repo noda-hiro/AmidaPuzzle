@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8138726343941850873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8138726343941850879}
+  - component: {fileID: 8138726343941850878}
+  - component: {fileID: 8138726343941850876}
+  m_Layer: 5
+  m_Name: BlockSpriteManager
+  m_TagString: BlockSprite
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8138726343941850879
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8138726343941850873}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 99}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8138726343941850878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8138726343941850873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5112bfb0a7c47d141a7817ffffd40517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockSpriteList:
+  - {fileID: 21300000, guid: 77730a2f0d8d7594780e059957fb527a, type: 3}
+  - {fileID: 21300000, guid: a2148f83d4c2b294a8610915f01cbc16, type: 3}
+  - {fileID: 21300000, guid: 5c4c1e44d2e35b34b890e67038bc7752, type: 3}
+  - {fileID: 21300000, guid: 95d570fa9f1f5984caa88eaf2854f1a0, type: 3}
+  - {fileID: 21300000, guid: 291ab65f6367ba740802ba87b3b9dabc, type: 3}
+  - {fileID: 21300000, guid: d3a956c87dfb0024b86e522421e49a9b, type: 3}
+  - {fileID: 21300000, guid: fd382e214058d7846a67255b7204d766, type: 3}
+--- !u!114 &8138726343941850876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8138726343941850873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a4af6d89f69d034d8f8188a49a60a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isClearList:
+  - {fileID: 0}
+  - {fileID: 0}
+  clearPanel: {fileID: 0}
+  failurePanel: {fileID: 0}
+  prefabPos: []
+  blockList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  nowClearBlockCount: 0
+  clearPointCount: 2
+  currentNum: 0
+  createLines: {fileID: 0}

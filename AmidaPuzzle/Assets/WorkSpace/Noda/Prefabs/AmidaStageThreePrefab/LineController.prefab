@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1400647027033385456
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400647027033385459}
+  - component: {fileID: 1400647027033385458}
+  - component: {fileID: 1400647027033385457}
+  m_Layer: 0
+  m_Name: LineController
+  m_TagString: verticalLine
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1400647027033385459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400647027033385456}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 124.368904, y: -6.7343035, z: 103.96319}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1400647027033385458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400647027033385456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531a7429f7be4a545aef2db12ee5fbcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  verticalLine: {fileID: 0}
+  NumberOfUnitsRequired: 3
+  lineList: {fileID: 0}
+  linePrefab: {fileID: 7793203829077251858, guid: 40634bb078cf9ca439615c139a18dcb8, type: 3}
+  line: {fileID: 0}
+  linePrefabs: []
+  lineCreated: []
+  parentObj: {fileID: 0}
+  maxCount: 3
+  currentCount: 0
+  lineCount: 0
+  linesPresenter: {fileID: 1400647027033385457}
+  lineCountText: {fileID: 0}
+--- !u!114 &1400647027033385457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400647027033385456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9fecb1fe04ac04a940683f46baee12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  create: {fileID: 1400647027033385458}
+  linePoint: {fileID: 3878331037710792583, guid: 8969dfdb35c7c5f419ddaaca0bf20dd6, type: 3}
+  endPosList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Blocks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  startBtn: {fileID: 0}
+  resetButton: {fileID: 0}
+  pointClass:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  startPosObjectList: []
+  endPosObjectList: []
