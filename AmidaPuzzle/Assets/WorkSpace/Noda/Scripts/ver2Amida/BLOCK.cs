@@ -102,10 +102,10 @@ public class BLOCK : MonoBehaviour
     private bool isInversion = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // var collsionPoint = collision.gameObject.GetComponent<PointClass>();
-        if (collision.tag == "Block")
+        var collsionPoint = collision.gameObject.GetComponentInChildren<BoxCollider2D>();
+        if (collision.gameObject.layer ==12)
         {
-            var BType = collision.gameObject.GetComponent<BLOCK>();
+            var BType = collision.gameObject.GetComponentInParent<BLOCK>();
             if (blockColorType == BType.blockColorType && onTheLine == false && BType.onTheLine == false)
             {
                 if (puzzleCount < BType.puzzleCount)
