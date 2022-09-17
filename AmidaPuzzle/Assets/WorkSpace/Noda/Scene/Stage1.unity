@@ -483,6 +483,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4293834590991959359, guid: dbd0cd9c98dedd24980421a93a6245a2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -264.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293834591193169401, guid: dbd0cd9c98dedd24980421a93a6245a2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -264.87
+      objectReference: {fileID: 0}
     - target: {fileID: 4293834591193169402, guid: dbd0cd9c98dedd24980421a93a6245a2, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -499,9 +507,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4293834591512286392, guid: dbd0cd9c98dedd24980421a93a6245a2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 263.8
+      objectReference: {fileID: 0}
     - target: {fileID: 4293834591601385141, guid: dbd0cd9c98dedd24980421a93a6245a2, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293834591673295521, guid: dbd0cd9c98dedd24980421a93a6245a2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 263.8
       objectReference: {fileID: 0}
     - target: {fileID: 4293834591673295522, guid: dbd0cd9c98dedd24980421a93a6245a2, type: 3}
       propertyPath: m_Layer
@@ -639,6 +655,14 @@ PrefabInstance:
       propertyPath: posController
       value: 
       objectReference: {fileID: 1003850382}
+    - target: {fileID: 5427405748657297459, guid: dbd0cd9c98dedd24980421a93a6245a2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -264.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427405748996395410, guid: dbd0cd9c98dedd24980421a93a6245a2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 263.8
+      objectReference: {fileID: 0}
     - target: {fileID: 5427405748996395415, guid: dbd0cd9c98dedd24980421a93a6245a2, type: 3}
       propertyPath: posController
       value: 

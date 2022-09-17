@@ -156,6 +156,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &735750402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1474466710620960088, guid: 3db7c4c2ea02cb04592284f2728cdb25, type: 3}
+  m_PrefabInstance: {fileID: 1474466709662618222}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &735750404
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735750402}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.67, y: 5.75}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 44.98, y: 101.49}
+  m_EdgeRadius: 0
 --- !u!224 &868176783 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1474466710444245473, guid: 3db7c4c2ea02cb04592284f2728cdb25, type: 3}
@@ -320,6 +351,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae897351775c4d34fa6fe8c88c003047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1764832268 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1474466710406179724, guid: 3db7c4c2ea02cb04592284f2728cdb25, type: 3}
+  m_PrefabInstance: {fileID: 1474466709662618222}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1764832270
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764832268}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 99.58, y: 95.79}
+  m_EdgeRadius: 0
 --- !u!1 &1774902991
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,6 +471,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af4c1dd80a9c594baf5d5a2a95ca92f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2138923033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1474466710153991419, guid: 3db7c4c2ea02cb04592284f2728cdb25, type: 3}
+  m_PrefabInstance: {fileID: 1474466709662618222}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &2138923035
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138923033}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 4.49, y: -4.7}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 96.71, y: 94.6}
+  m_EdgeRadius: 0
 --- !u!1001 &1400647025968518120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -621,14 +714,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1474466710153991419, guid: 3db7c4c2ea02cb04592284f2728cdb25, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1474466710312229823, guid: 3db7c4c2ea02cb04592284f2728cdb25, type: 3}
       propertyPath: prefab
       value: 
       objectReference: {fileID: 1082636824}
+    - target: {fileID: 1474466710406179724, guid: 3db7c4c2ea02cb04592284f2728cdb25, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1474466710600145345, guid: 3db7c4c2ea02cb04592284f2728cdb25, type: 3}
       propertyPath: posController
       value: 
       objectReference: {fileID: 1003850382}
+    - target: {fileID: 1474466710620960088, guid: 3db7c4c2ea02cb04592284f2728cdb25, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1474466711009079849, guid: 3db7c4c2ea02cb04592284f2728cdb25, type: 3}
       propertyPath: posController
       value: 

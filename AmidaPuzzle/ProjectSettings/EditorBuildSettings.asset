@@ -14,19 +14,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/WorkSpace/Noda/Scene/Stage1.unity
     guid: eee94882340aa714abf8f3cf178ef830
-  - enabled: 0
+  - enabled: 1
     path: Assets/WorkSpace/Noda/Scene/Stage2.unity
     guid: 41eb5e74f5873104c896ee1cd00fd07c
-  - enabled: 0
+  - enabled: 1
+    path: Assets/WorkSpace/Noda/Scene/Stage3.unity
+    guid: e3a6d5b1620550646be9b390746a2447
+  - enabled: 1
+    path: Assets/WorkSpace/Noda/Scene/Stage4.unity
+    guid: 7f826750ad431c24fb2dc4e1ee479dbd
+  - enabled: 1
+    path: Assets/WorkSpace/Noda/Scene/Stage5.unity
+    guid: f0ec35c8f5300044d8823f682d1ac8ab
+  - enabled: 1
     path: Assets/WorkSpace/Noda/Scene/Stage6.unity
     guid: 881bb5df9331f3143bc720ecdbd1f6b5
-  - enabled: 0
-    path: Assets/WorkSpace/Noda/Scene/PractiseAmida.unity
-    guid: 67334d4c9ae3a55408cf59ae4911fb44
-  - enabled: 1
-    path: Assets/WorkSpace/Yosimura/Scene/UI_Window.unity
-    guid: 9b1708571852d6f47b4bd5759e2b7087
-  - enabled: 1
-    path: Assets/WorkSpace/Yosimura/Scene/Ex_Window.unity
-    guid: 81e6eb8cfa22f6b41aa4155442999cfe
   m_configObjects: {}
