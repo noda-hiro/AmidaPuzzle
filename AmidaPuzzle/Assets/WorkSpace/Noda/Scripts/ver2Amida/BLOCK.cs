@@ -119,7 +119,8 @@ public class BLOCK : MonoBehaviour
         if (collision.gameObject.layer == 12)
         {
             var BType = collision.gameObject.GetComponentInParent<BLOCK>();
-            if (blockColorType == BType.blockColorType && onTheLine == false && BType.onTheLine == false)
+            if (blockColorType == BType.blockColorType
+                && onTheLine == false && BType.onTheLine == false)
             {
                 if (puzzleCount < BType.puzzleCount)
                 {
@@ -197,7 +198,7 @@ public class BLOCK : MonoBehaviour
     private void BlockCoalescingCalculations(int collisioPuzzleCount)
     {
         var block = (int)blockType;
-
+        Debug.Log(collisioPuzzleCount);
         if (block == 1 && collisioPuzzleCount == 2
             || block == 2 && collisioPuzzleCount == 1)
         {
@@ -206,13 +207,13 @@ public class BLOCK : MonoBehaviour
             blockSpriteChange.ChangeBlockSprite(this.gameObject, 1);
             puzzleCount = 10;
         }
-        else if (block == 2 && collisioPuzzleCount == 3
-            || block == 3 && collisioPuzzleCount == 2)
+        else if (block == 4 && collisioPuzzleCount == 3
+            || block == 3 && collisioPuzzleCount == 4)
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-            blockSpriteChange.ChangeBlockSprite(this.gameObject, 2);
-            puzzleCount = 30;
+            // blockSpriteChange.ChangeBlockSprite(this.gameObject, 2);
+            puzzleCount = 20;
         }
         else if (block == 5 && collisioPuzzleCount == 6
             || block == 6 && collisioPuzzleCount == 5)

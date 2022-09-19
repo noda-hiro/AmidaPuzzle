@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/WorkSpace/Noda/Scene/Stage6.unity
     guid: 881bb5df9331f3143bc720ecdbd1f6b5
+  - enabled: 1
+    path: Assets/WorkSpace/Yosimura/Scene/Effct.unity
+    guid: 80345daf84e1a6f469333a1739eba822
   m_configObjects: {}

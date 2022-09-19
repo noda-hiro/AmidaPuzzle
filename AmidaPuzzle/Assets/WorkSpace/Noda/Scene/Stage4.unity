@@ -978,8 +978,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 186, y: -38}
-  m_SizeDelta: {x: 320, y: 50}
+  m_AnchoredPosition: {x: 339.6, y: -38}
+  m_SizeDelta: {x: 55.0217, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &387760372
 MonoBehaviour:
@@ -1003,7 +1003,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1242,7 +1242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btn: {fileID: 347366650}
-  moveSpeed: 5
   point: {fileID: 0}
   myBlockLineNum: 2
   isSwitching: 0
@@ -1251,6 +1250,7 @@ MonoBehaviour:
   puzzleCount: 2
   isComplete: 0
   finishNum: 0
+  onTheLine: 0
   posController: {fileID: 1003850382}
 --- !u!1 &499290321
 GameObject:
@@ -1435,6 +1435,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 387760371}
+  - {fileID: 1521399128}
   m_Father: {fileID: 347660851}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2472,6 +2473,7 @@ MonoBehaviour:
   clearPanel: {fileID: 1035291374}
   failurePanel: {fileID: 1004063181}
   prefabPos: []
+  EffectPrefaabList: []
   blockList:
   - {fileID: 1816351989}
   - {fileID: 1222740911}
@@ -2480,6 +2482,7 @@ MonoBehaviour:
   nowClearBlockCount: 0
   clearPointCount: 2
   currentNum: 0
+  createLines: {fileID: 0}
 --- !u!1 &1004063181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2717,6 +2720,9 @@ MonoBehaviour:
   - {fileID: 0}
   startBtn: {fileID: 347366650}
   resetButton: {fileID: 1785851390}
+  pointClass: []
+  startPosObjectList: []
+  endPosObjectList: []
 --- !u!114 &1082636826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3091,7 +3097,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btn: {fileID: 347366650}
-  moveSpeed: 5
   point: {fileID: 0}
   myBlockLineNum: 1
   isSwitching: 0
@@ -3100,6 +3105,7 @@ MonoBehaviour:
   puzzleCount: 3
   isComplete: 0
   finishNum: 0
+  onTheLine: 0
   posController: {fileID: 1003850382}
 --- !u!1 &1250259831
 GameObject:
@@ -3441,6 +3447,7 @@ MonoBehaviour:
   pauseButton: {fileID: 1348824918}
   returnButton: {fileID: 1257884672}
   titleButton: {fileID: 1401591452}
+  reStartButton: {fileID: 0}
   panel: {fileID: 1920086666}
 --- !u!1 &1387712005
 GameObject:
@@ -3908,6 +3915,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518359897}
+  m_CullTransparentMesh: 1
+--- !u!1 &1521399127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1521399128}
+  - component: {fileID: 1521399130}
+  - component: {fileID: 1521399129}
+  m_Layer: 5
+  m_Name: remaining
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1521399128
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521399127}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 566059281}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -29.639893, y: 0}
+  m_SizeDelta: {x: 268.27603, y: 44.8}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1521399129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521399127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: d24418284aa801e41a5df6e6e732408f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1521399130
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521399127}
   m_CullTransparentMesh: 1
 --- !u!1 &1548387547
 GameObject:
@@ -4749,7 +4832,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btn: {fileID: 347366650}
-  moveSpeed: 5
   point: {fileID: 0}
   myBlockLineNum: 0
   isSwitching: 0
@@ -4758,6 +4840,7 @@ MonoBehaviour:
   puzzleCount: 2
   isComplete: 0
   finishNum: 0
+  onTheLine: 0
   posController: {fileID: 1003850382}
 --- !u!61 &1816351990
 BoxCollider2D:
@@ -5024,7 +5107,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btn: {fileID: 347366650}
-  moveSpeed: 5
   point: {fileID: 0}
   myBlockLineNum: 3
   isSwitching: 0
@@ -5033,6 +5115,7 @@ MonoBehaviour:
   puzzleCount: 1
   isComplete: 0
   finishNum: 0
+  onTheLine: 0
   posController: {fileID: 1003850382}
 --- !u!1 &1975879082
 GameObject:

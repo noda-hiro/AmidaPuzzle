@@ -27,7 +27,7 @@ public class CreateLines : SingletonMonobehaviour<CreateLines>
     public void TextInit()
     {
         lineCount = maxCount;
-        lineCountText.text = "引く線の数：" + lineCount + "本";
+        lineCountText.text = lineCount.ToString();
     }
 
     public void Createline()
@@ -47,7 +47,7 @@ public class CreateLines : SingletonMonobehaviour<CreateLines>
     public void UpdateLineCountText()
     {
         lineCount--;
-        lineCountText.text = "引く線の数：" + lineCount + "本";
+        lineCountText.text =  lineCount.ToString();
     }
 
     public void ReMoveLine()
