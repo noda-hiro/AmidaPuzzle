@@ -59,7 +59,6 @@ public class End : MonoBehaviour
 
         if (posController.blockList.All(i => i.isComplete == true))
         {
-            Debug.Log("‚¨‚í‚è");
             if (posController.isClearList.All(i => i.isClear == true))
             {
                 posController.createLines.ReMoveLine();

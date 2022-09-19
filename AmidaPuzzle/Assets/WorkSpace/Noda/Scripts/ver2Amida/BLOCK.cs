@@ -62,6 +62,17 @@ public class BLOCK : MonoBehaviour
 
     public IEnumerator MoveToDestinationPoint(Vector3 nextPos, int count, bool istemp, Vector3 vector/* PointClass _justInCasePintClass*/)
     {
+        var dis = GetAngle(transform.position, nextPos);
+
+        if (dis > 45f)
+        {
+            moveSpeed = 200f;
+        }
+        else
+        {
+            moveSpeed = 300f;
+        }
+
         while (true)
         {
             if (this.transform.position == nextPos && isComplete == false)
@@ -87,6 +98,8 @@ public class BLOCK : MonoBehaviour
             }
             else
             {
+
+
                 transform.position = Vector2.MoveTowards(this.transform.position, nextPos, moveSpeed * Time.deltaTime);
             }
             if (istemp != isSwitching)
@@ -103,10 +116,11 @@ public class BLOCK : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var collsionPoint = collision.gameObject.GetComponentInChildren<BoxCollider2D>();
-        if (collision.gameObject.layer ==12)
+        if (collision.gameObject.layer == 12)
         {
             var BType = collision.gameObject.GetComponentInParent<BLOCK>();
-            if (blockColorType == BType.blockColorType && onTheLine == false && BType.onTheLine == false)
+            if (blockColorType == BType.blockColorType
+                && onTheLine == false && BType.onTheLine == false)
             {
                 if (puzzleCount < BType.puzzleCount)
                 {
@@ -117,6 +131,7 @@ public class BLOCK : MonoBehaviour
                 {
                     BlockCoalescingCalculations(BType.puzzleCount);
                 }
+
             }
             else
             {
@@ -183,7 +198,7 @@ public class BLOCK : MonoBehaviour
     private void BlockCoalescingCalculations(int collisioPuzzleCount)
     {
         var block = (int)blockType;
-
+        Debug.Log(collisioPuzzleCount);
         if (block == 1 && collisioPuzzleCount == 2
             || block == 2 && collisioPuzzleCount == 1)
         {
@@ -192,13 +207,13 @@ public class BLOCK : MonoBehaviour
             blockSpriteChange.ChangeBlockSprite(this.gameObject, 1);
             puzzleCount = 10;
         }
-        else if (block == 2 && collisioPuzzleCount == 3
-            || block == 3 && collisioPuzzleCount == 2)
+        else if (block == 4 && collisioPuzzleCount == 3
+            || block == 3 && collisioPuzzleCount == 4)
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-            blockSpriteChange.ChangeBlockSprite(this.gameObject, 2);
-            puzzleCount = 30;
+            // blockSpriteChange.ChangeBlockSprite(this.gameObject, 2);
+            puzzleCount = 20;
         }
         else if (block == 5 && collisioPuzzleCount == 6
             || block == 6 && collisioPuzzleCount == 5)
@@ -219,4 +234,11 @@ public class BLOCK : MonoBehaviour
 
     }
 
+    private float GetAngle(Vector2 startPos, Vector2 targetPos)
+    {
+        Vector2 dt = targetPos - startPos;
+        float rad = Mathf.Atan2(dt.y, dt.x);
+        float degree = rad * Mathf.Rad2Deg;
+        return degree;
+    }
 }

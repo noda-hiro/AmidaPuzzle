@@ -12,7 +12,7 @@ public class EffectSE : MonoBehaviour
     void Start()
     {
         seedPs = GetComponent<ParticleSystem>();
-       StartCoroutine(ProgressCo());
+        //StartCoroutine(ProgressCo());
     }
 
     private int getSubEmitterParticleNum()
@@ -26,7 +26,7 @@ public class EffectSE : MonoBehaviour
         return ptNum;
     }
 
-    IEnumerator ProgressCo()
+    public IEnumerator ProgressCo()
     {
         // ”š”­‘Ò‚¿
         while (getSubEmitterParticleNum() == 0)
@@ -36,6 +36,7 @@ public class EffectSE : MonoBehaviour
         // ”š”­‰¹
         explodeAudioObj.GetComponent<AudioSource>().pitch *= Random.Range(0.8f, 1.2f);
         explodeAudioObj.GetComponent<AudioSource>().Play();
+        //yield return new WaitForSeconds(1f);
         // Á–Å‘Ò‚¿
         while (getSubEmitterParticleNum() > 0)
         {

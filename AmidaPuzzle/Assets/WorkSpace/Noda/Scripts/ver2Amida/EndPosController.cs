@@ -11,6 +11,7 @@ public class EndPosController : MonoBehaviour
     public GameObject clearPanel = null;
     public GameObject failurePanel = null;
     [SerializeField] private List<Transform> prefabPos = new List<Transform>();
+    [SerializeField] private List<EffectSE> EffectPrefaabList = new List<EffectSE>();
     public List<BLOCK> blockList = new List<BLOCK>();
     private int count = 0;
     public int nowClearBlockCount = -1;
@@ -36,6 +37,7 @@ public class EndPosController : MonoBehaviour
         {
             if (isClearList.All(i => i.isClear == true))
             {
+                GameClearEffect();
                 clearPanel.SetActive(true);
                 failurePanel.SetActive(false);
             }
@@ -45,4 +47,13 @@ public class EndPosController : MonoBehaviour
                 failurePanel.SetActive(true);
         }
     }
+
+    private void GameClearEffect()
+    {
+        for(int i=0;i<EffectPrefaabList.Count;i++)
+        {
+            StartCoroutine(EffectPrefaabList[i].ProgressCo());
+        }
+    }
+
 }
