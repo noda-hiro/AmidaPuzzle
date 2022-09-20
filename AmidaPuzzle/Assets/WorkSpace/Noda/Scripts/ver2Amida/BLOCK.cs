@@ -64,7 +64,7 @@ public class BLOCK : MonoBehaviour
     {
         var dis = GetAngle(transform.position, nextPos);
 
-        if (dis > 45f)
+        if (dis > 60f || dis == 90)
         {
             moveSpeed = 200f;
         }
@@ -212,7 +212,7 @@ public class BLOCK : MonoBehaviour
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-            // blockSpriteChange.ChangeBlockSprite(this.gameObject, 2);
+            blockSpriteChange.ChangeBlockSprite(this.gameObject, 2);
             puzzleCount = 20;
         }
         else if (block == 5 && collisioPuzzleCount == 6

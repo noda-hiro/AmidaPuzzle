@@ -11,6 +11,7 @@ public class GamePause : MonoBehaviour
     [SerializeField] private Button titleButton = null;
     [SerializeField] private Button reStartButton = null;
     [SerializeField] private GameObject panel;
+    [SerializeField] private noda.AudioManager audioManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,26 +23,29 @@ public class GamePause : MonoBehaviour
 
     private void PauseGame()
     {
+        audioManager.PlayStart("coalescenceButtonSE");
         panel.SetActive(true);
         Time.timeScale = 0;
     }
 
     private void ReturnGame()
     {
+        audioManager.PlayStart("coalescenceButtonSE");
         panel.SetActive(false);
         Time.timeScale = 1;
     }
 
     private void ReturnSelectScreen()
     {
+        audioManager.PlayStart("coalescenceButtonSE");
         ReturnGame();
         SceneManager.LoadScene("SelectStage");
     }
 
     private void ReStartGame()
     {
+        audioManager.PlayStart("coalescenceButtonSE");
         ReturnGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
 }

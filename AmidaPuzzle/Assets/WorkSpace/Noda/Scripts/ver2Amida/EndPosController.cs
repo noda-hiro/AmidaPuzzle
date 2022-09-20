@@ -11,19 +11,21 @@ public class EndPosController : MonoBehaviour
     public GameObject clearPanel = null;
     public GameObject failurePanel = null;
     [SerializeField] private List<Transform> prefabPos = new List<Transform>();
-    [SerializeField] private List<EffectSE> EffectPrefaabList = new List<EffectSE>();
+    [SerializeField] private GameObject effectPrefab;
     public List<BLOCK> blockList = new List<BLOCK>();
     private int count = 0;
     public int nowClearBlockCount = -1;
     public int clearPointCount = 2;
     public int currentNum = 0;
     [SerializeField] public CreateLines createLines;
+    WaitForSeconds waitTime = new WaitForSeconds(1f);
+
 
     private void Start()
     {
         this.UpdateAsObservable().Where(_ => Input.GetKeyDown(KeyCode.Space)).Subscribe(_ =>
         {
-            CheckClear();
+           StartCoroutine(CheckClear());
         });
     }
     private void Update()
@@ -31,28 +33,23 @@ public class EndPosController : MonoBehaviour
         //CheckClear();
     }
 
-    public void CheckClear()
+    public IEnumerator CheckClear()
     {
         if (nowClearBlockCount == 1 || nowClearBlockCount == 2 || nowClearBlockCount == 3 || nowClearBlockCount == 4)
         {
             if (isClearList.All(i => i.isClear == true))
             {
-                GameClearEffect();
+                Debug.Log(effectPrefab);
+                effectPrefab.gameObject.SetActive(true);
+                yield return waitTime;
                 clearPanel.SetActive(true);
                 failurePanel.SetActive(false);
+                yield break;
             }
             //else if (isClearList.All(i => i.isClear == false))
             //    failurePanel.SetActive(true);
             else
                 failurePanel.SetActive(true);
-        }
-    }
-
-    private void GameClearEffect()
-    {
-        for(int i=0;i<EffectPrefaabList.Count;i++)
-        {
-            StartCoroutine(EffectPrefaabList[i].ProgressCo());
         }
     }
 

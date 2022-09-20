@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UniRx;
-using UniRx.Triggers;
 using System.Linq;
+using UnityEngine;
 
 public class End : MonoBehaviour
 {
@@ -37,7 +35,10 @@ public class End : MonoBehaviour
     public int nowClearBlockCount { get; private set; }
     [SerializeField] public List<GameObject> prefabList = new List<GameObject>();
     [SerializeField] private EndPosController posController = null;
+    [SerializeField] private GameObject EffectObject;
     private int count;
+    WaitForSeconds waitTime = new WaitForSeconds(0.5f);
+    WaitForSeconds waitTimeOneFrame = new WaitForSeconds(1.3f);
 
     private void Start()
     {
@@ -61,8 +62,7 @@ public class End : MonoBehaviour
         {
             if (posController.isClearList.All(i => i.isClear == true))
             {
-                posController.createLines.ReMoveLine();
-                posController.clearPanel.SetActive(true);
+                StartCoroutine(ClearEffectPlay());
                 return;
             }
             else if (posController.isClearList.All(i => i.isClear != true))
@@ -71,12 +71,21 @@ public class End : MonoBehaviour
                 posController.failurePanel.SetActive(true);
                 return;
             }
-            else if (posController.isClearList[0].isClear==true&& posController.isClearList[1].isClear == false|| posController.isClearList[0].isClear == false&& posController.isClearList[1].isClear == true)
+            else if (posController.isClearList[0].isClear == true && posController.isClearList[1].isClear == false || posController.isClearList[0].isClear == false && posController.isClearList[1].isClear == true)
             {
                 posController.createLines.ReMoveLine();
                 posController.failurePanel.SetActive(true);
             }
         }
+    }
+
+    public IEnumerator ClearEffectPlay()
+    {
+        yield return waitTime;
+        EffectObject.SetActive(true);
+        yield return waitTimeOneFrame;
+        posController.createLines.ReMoveLine();
+        posController.clearPanel.SetActive(true);
     }
 }
 

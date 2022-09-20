@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1020748525719326256}
   - component: {fileID: 8202500255335627208}
   - component: {fileID: -1373512838819324567}
+  - component: {fileID: 3847381238515304556}
   m_Layer: 0
   m_Name: Line
   m_TagString: Untagged
@@ -59,7 +60,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 36849dc56e13d9e489de0ea4e8bd39ff, type: 2}
+  - {fileID: 2100000, guid: de642b40db0276e468c4742de54ab726, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -192,3 +193,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bf9a21459ab8e94980a42cd10cffc08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!210 &3847381238515304556
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7793203829077251858}
+  m_Enabled: 1
+  m_SortingLayerID: 476699849
+  m_SortingLayer: 1
+  m_SortingOrder: -1

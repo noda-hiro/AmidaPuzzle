@@ -12,7 +12,7 @@ public class EffectSE : MonoBehaviour
     void Start()
     {
         seedPs = GetComponent<ParticleSystem>();
-        //StartCoroutine(ProgressCo());
+        StartCoroutine(ProgressCo());
     }
 
     private int getSubEmitterParticleNum()
