@@ -54,6 +54,7 @@ public class BLOCK : MonoBehaviour
     private bool onTheLine;
     [SerializeField] private EndPosController posController;
     private bool isStack;
+    private bool OnVerticalLine;
 
     private void Start()
     {
@@ -116,11 +117,12 @@ public class BLOCK : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var collsionPoint = collision.gameObject.GetComponentInChildren<BoxCollider2D>();
-        if (collision.gameObject.layer == 12)
+        var BType = collision.gameObject.GetComponentInParent<BLOCK>();
+
+        if (collision.gameObject.layer == 12 && OnVerticalLine)
         {
-            var BType = collision.gameObject.GetComponentInParent<BLOCK>();
             if (blockColorType == BType.blockColorType
-                && onTheLine == false && BType.onTheLine == false)
+               /* && onTheLine == false && BType.onTheLine == false*/)
             {
                 if (puzzleCount < BType.puzzleCount)
                 {
@@ -155,6 +157,7 @@ public class BLOCK : MonoBehaviour
         //ぶつかったのがポイントなら　右か左
         else if (collision.gameObject.layer == 8)
         {
+            OnVerticalLine = !OnVerticalLine;
             pointClass = collision.GetComponent<PointClass>();
             //現在の逆 0or1 ビット演算に近いもの
             isSwitching = !isSwitching;
@@ -193,6 +196,14 @@ public class BLOCK : MonoBehaviour
                 }
             }
         }
+        else if (collision.gameObject.tag == "verticalLine")
+        {
+            Debug.Log("線に当たってるよ");
+        }
+        else if (collision.gameObject.tag == "AMIDA")
+        {
+            Debug.Log(collision.gameObject.GetComponent<VerticalLine>().verticalLineNum);
+        }
     }
 
     private void BlockCoalescingCalculations(int collisioPuzzleCount)
@@ -212,7 +223,7 @@ public class BLOCK : MonoBehaviour
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-            blockSpriteChange.ChangeBlockSprite(this.gameObject, 2);
+            //blockSpriteChange.ChangeBlockSprite(this.gameObject, 2);
             puzzleCount = 20;
         }
         else if (block == 5 && collisioPuzzleCount == 6
@@ -220,7 +231,7 @@ public class BLOCK : MonoBehaviour
         {
             this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
-            blockSpriteChange.ChangeBlockSprite(this.gameObject, 3);
+            // blockSpriteChange.ChangeBlockSprite(this.gameObject, 3);
             puzzleCount = 30;
         }
         else if (block == 7 && collisioPuzzleCount == 8

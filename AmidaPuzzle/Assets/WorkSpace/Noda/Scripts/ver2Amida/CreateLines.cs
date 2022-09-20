@@ -18,6 +18,7 @@ public class CreateLines : SingletonMonobehaviour<CreateLines>
     public int lineCount = 0;
     [SerializeField] private LinesPresenter linesPresenter;
     [SerializeField] private Text lineCountText;
+    private int verticalLineCount = 0;
 
     void Start()
     {
@@ -35,6 +36,8 @@ public class CreateLines : SingletonMonobehaviour<CreateLines>
         if (line == null && currentCount < maxCount)
         {
             line = Instantiate(linePrefab, Vector2.zero, Quaternion.identity, parentObj.parent);
+            verticalLineCount++;
+            line.GetComponent<VerticalLine>().verticalLineNum = verticalLineCount;
         }
 
         if (currentCount == maxCount)
