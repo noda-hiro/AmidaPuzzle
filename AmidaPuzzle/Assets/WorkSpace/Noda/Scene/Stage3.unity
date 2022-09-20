@@ -3695,7 +3695,7 @@ MonoBehaviour:
   - {fileID: 1816351985}
   - {fileID: 1222740905}
   posController: {fileID: 1003850382}
-  SEObject: {fileID: 616903902}
+  EffectObject: {fileID: 616903902}
 --- !u!61 &8125838474062901546
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3805,4 +3805,4 @@ MonoBehaviour:
   - {fileID: 1816351985}
   - {fileID: 1222740905}
   posController: {fileID: 1003850382}
-  SEObject: {fileID: 616903902}
+  EffectObject: {fileID: 616903902}

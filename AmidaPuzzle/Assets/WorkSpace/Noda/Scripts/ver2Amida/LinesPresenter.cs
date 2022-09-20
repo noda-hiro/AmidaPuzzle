@@ -67,12 +67,16 @@ public class LinesPresenter : MonoBehaviour
     {
         var mouseFirstDown = this.UpdateAsObservable()
             .Where(_ => Input.GetMouseButtonUp(0))        //ボタンが押されたら 
-            .Select(_ => Camera.main.ScreenPointToRay(Input.mousePosition))//Cameraから見たマウスポイントに
+            .Select(_ => Camera.main.ScreenPointToRay(Input.mousePosition));
+
+        Observable.ThrottleFirst(mouseFirstDown, TimeSpan.FromSeconds(0.5f))//Cameraから見たマウスポイントに
             .Subscribe(X =>
             {
                 lineModel.InputMouseUpPosRay(X);
             })
             .AddTo(this);
+
+
     }
 
     ///クリックを離したときの判定処理
@@ -158,7 +162,7 @@ public class LinesPresenter : MonoBehaviour
         for (int i = 0; i < Blocks.Count; i++)
         {
             Blocks[i].GetComponent<BLOCK>();
-            Blocks[i].StartCoroutine(Blocks[i].MoveToDestinationPoint(endPosList[i].position, 0, Blocks[i].isSwitching,pointClass[i]._twoPoint));
+            Blocks[i].StartCoroutine(Blocks[i].MoveToDestinationPoint(endPosList[i].position, 0, Blocks[i].isSwitching, pointClass[i]._twoPoint));
         }
         startBtn.interactable = false;
     }

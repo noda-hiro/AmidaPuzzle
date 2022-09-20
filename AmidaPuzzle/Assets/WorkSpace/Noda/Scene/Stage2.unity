@@ -349,6 +349,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91014061}
   m_CullTransparentMesh: 1
+--- !u!1 &151032027 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3891659970106684526, guid: 7f0457277b533564387ae3440cd1738f, type: 3}
+  m_PrefabInstance: {fileID: 1371445376}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &185067820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,7 +2242,7 @@ MonoBehaviour:
   - {fileID: 1222740905}
   - {fileID: 58467611}
   posController: {fileID: 1003850382}
-  EffectObject: {fileID: 0}
+  EffectObject: {fileID: 151032027}
 --- !u!222 &1346494537
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2259,7 +2264,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 60.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3705,7 +3710,7 @@ MonoBehaviour:
   - {fileID: 1222740905}
   - {fileID: 58467611}
   posController: {fileID: 1003850382}
-  EffectObject: {fileID: 0}
+  EffectObject: {fileID: 151032027}
 --- !u!61 &8125838474062901546
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3816,4 +3821,4 @@ MonoBehaviour:
   - {fileID: 1222740905}
   - {fileID: 58467611}
   posController: {fileID: 1003850382}
-  EffectObject: {fileID: 0}
+  EffectObject: {fileID: 151032027}

@@ -1069,7 +1069,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -1.6527958, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1080,7 +1080,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 100.57, y: 46.54}
+  m_Size: {x: 80.29442, y: 35.6}
   m_EdgeRadius: 0
 --- !u!1 &787693134
 GameObject:
@@ -2416,10 +2416,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 56.57, y: -39.48}
+  m_Offset: {x: 57.31578, y: -36.49685}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2430,7 +2430,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 46.4, y: 44.4}
+  m_Size: {x: 30.589355, y: 38.43373}
   m_EdgeRadius: 0
 --- !u!61 &1227302713
 BoxCollider2D:
@@ -2442,10 +2442,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -45.92, y: -39.47}
+  m_Offset: {x: -44.726727, y: -36.337715}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2456,7 +2456,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 47.43, y: 43.81}
+  m_Size: {x: 30.12783, y: 37.545452}
   m_EdgeRadius: 0
 --- !u!61 &1227302714
 BoxCollider2D:
@@ -2471,7 +2471,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4.98, y: 10.43}
+  m_Offset: {x: 5.1291733, y: 6.1044354}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2482,7 +2482,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 149.46, y: 45.22}
+  m_Size: {x: 132.45612, y: 36.56888}
   m_EdgeRadius: 0
 --- !u!1 &1346494533
 GameObject:
@@ -2543,7 +2543,7 @@ MonoBehaviour:
   - {fileID: 1816351985}
   - {fileID: 1222740905}
   posController: {fileID: 1003850382}
-  EffectObject: {fileID: 0}
+  EffectObject: {fileID: 1734388451}
 --- !u!222 &1346494537
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3208,6 +3208,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615162419}
   m_CullTransparentMesh: 1
+--- !u!1 &1734388451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3891659970106684526, guid: 7f0457277b533564387ae3440cd1738f, type: 3}
+  m_PrefabInstance: {fileID: 865245519}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1745210619 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8649491947940716880, guid: da643a3044d081746b84d8b3e7ea0b8f, type: 3}
@@ -4168,7 +4173,7 @@ MonoBehaviour:
   - {fileID: 1222740905}
   - {fileID: 58467611}
   posController: {fileID: 1003850382}
-  EffectObject: {fileID: 0}
+  EffectObject: {fileID: 1734388451}
 --- !u!61 &8125838474062901546
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4279,4 +4284,4 @@ MonoBehaviour:
   - {fileID: 1222740905}
   - {fileID: 58467611}
   posController: {fileID: 1003850382}
-  EffectObject: {fileID: 0}
+  EffectObject: {fileID: 1734388451}
