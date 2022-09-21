@@ -38,7 +38,7 @@ public class StageSelectController : MonoBehaviour
         ButtonList[0].onClick.AddListener(() => { StartCoroutine(StageLoad(1)); });
         ButtonList[1].onClick.AddListener(() => { StartCoroutine(StageLoad(2)); });
         ButtonList[2].onClick.AddListener(() => { StartCoroutine(StageLoad(3)); });
-        ButtonList[3].onClick.AddListener(() => { StartCoroutine(StageLoad(41)); });
+        ButtonList[3].onClick.AddListener(() => { StartCoroutine(StageLoad(4)); });
         ButtonList[4].onClick.AddListener(() => { StartCoroutine(StageLoad(5)); });
         ButtonList[5].onClick.AddListener(() => { StartCoroutine(StageLoad(6)); });
     }
