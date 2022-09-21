@@ -24,6 +24,8 @@ public class LinesPresenter : MonoBehaviour
     [SerializeField]
     private List<GameObject> endPosObjectList;
     [SerializeField] private noda.AudioManager audioManager;
+    private int num;
+
     private void Awake()
     {
         this.lineModel = new LinesModel();
@@ -141,10 +143,13 @@ public class LinesPresenter : MonoBehaviour
         startposline.transform.parent = this.lineModel.firstClickLineObj.gameObject.transform;
         endposline.transform.parent = this.lineModel.secondClickLineObj.gameObject.transform;
         startposline.transform.localPosition = new Vector3(0f, startposline.transform.localPosition.y, startposline.transform.localPosition.z);
-        endposline.transform.localPosition = new Vector3(0f, endposline.transform.localPosition.y, endposline.transform.localPosition.z);
+        //startposline.transform.localPosition = new Vector3(startposline.transform.localPosition.x, startposline.transform.localPosition.y, startposline.transform.localPosition.z);
+        endposline.transform.localPosition = new Vector3(0, endposline.transform.localPosition.y, endposline.transform.localPosition.z);
+        //endposline.transform.localPosition = new Vector3(endposline.transform.localPosition.x, endposline.transform.localPosition.y, endposline.transform.localPosition.z);
         var endPoint = endposline.GetComponent<PointClass>();
         var startPoint = startposline.GetComponent<PointClass>();
-
+        endPoint.linePointNum = num;
+        startPoint.linePointNum = num;
         startPoint._onePoint = endPoint.transform.position;
         startPoint._currentPoint = startPoint.transform.position;
         endPoint._currentPoint = endPoint.transform.position;
@@ -155,6 +160,7 @@ public class LinesPresenter : MonoBehaviour
         lineCount++;
         endPoint.Init(lineCount);
         lineCount++;
+        num++;
     }
 
     private void BlockInit()

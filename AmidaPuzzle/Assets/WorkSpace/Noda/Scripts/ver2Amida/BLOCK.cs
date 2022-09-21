@@ -56,6 +56,9 @@ public class BLOCK : MonoBehaviour
     private bool isStack;
     private bool OnVerticalLine;
     [SerializeField] private noda.AudioManager audioManager;
+    private int currentNum;
+    private int currentLineNum;
+
     private void Start()
     {
         blockSpriteChange = GameObject.FindWithTag("BlockSprite").GetComponent<BlockSpriteChange>();
@@ -72,7 +75,6 @@ public class BLOCK : MonoBehaviour
         {
             moveSpeed = 300f;
         }
-        Debug.Log(moveSpeed);
         while (true)
         {
             if (this.transform.position == nextPos && isComplete == false)
@@ -98,7 +100,11 @@ public class BLOCK : MonoBehaviour
             }
             else
             {
-
+                if (GetAngle(this.transform.position, nextPos) > 85 && GetAngle(this.transform.position, nextPos) < 95)
+                {
+                    Debug.Log(GetAngle(this.transform.position, nextPos));
+                    isInversion = false;
+                }
 
                 transform.position = Vector2.MoveTowards(this.transform.position, nextPos, moveSpeed * Time.deltaTime);
             }
@@ -118,29 +124,39 @@ public class BLOCK : MonoBehaviour
         var collsionPoint = collision.gameObject.GetComponentInChildren<BoxCollider2D>();
         var BType = collision.gameObject.GetComponentInParent<BLOCK>();
 
-        if (collision.gameObject.layer == 12 && OnVerticalLine && BType.OnVerticalLine)
+        if (collision.gameObject.layer == 12)
         {
-            if (blockColorType == BType.blockColorType
+            Debug.Log(currentNum);
+            Debug.Log(BType.currentNum);
+            if (blockColorType == BType.blockColorType && currentNum == BType.currentNum || currentLineNum == BType.currentLineNum
                /* && onTheLine == false && BType.onTheLine == false*/)
             {
                 if (puzzleCount < BType.puzzleCount)
                 {
                     posController.blockList.Remove(this);
                     Destroy(this.gameObject);
+                    return;
                 }
                 else
                 {
                     audioManager.PlayStart("collisionSE");
                     BlockCoalescingCalculations(BType.puzzleCount);
+                    return;
                 }
 
             }
-            else
+            else if (currentNum != BType.currentNum)
             {
+                return;
+            }
+            else if (blockColorType != BType.blockColorType)
+            {
+                Debug.Log("あう");
                 audioManager.PlayStart("coalescenceSE");
                 isSwitching = !isSwitching;
                 isInversion = true;
                 StartCoroutine(MoveToDestinationPoint(pointClass._currentPoint, 0, isSwitching, pointClass._twoPoint));
+                return;
             }
         }
         //ぶつかったのがポイントでブロックのタイプが逆向きなら ↓
@@ -153,16 +169,33 @@ public class BLOCK : MonoBehaviour
         {
             //todo　コルーチン止まらなかったらごめん
             this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            var boxCollider = this.gameObject.GetComponentsInChildren<BoxCollider2D>();
+            var polygonCollider = this.gameObject.GetComponentsInChildren<PolygonCollider2D>();
+            if (polygonCollider != null)
+            {
+                for (int i = 0; i < polygonCollider.Length; i++)
+                {
+                    polygonCollider[i].enabled = false;
+                }
+            }
+
+            for (int i = 0; i < boxCollider.Length; i++)
+            {
+                boxCollider[i].enabled = false;
+            }
+
+            return;
             //isComplete = true;
         }
         //ぶつかったのがポイントなら　右か左
         else if (collision.gameObject.layer == 8)
         {
-            OnVerticalLine = !OnVerticalLine;
+            OnVerticalLine = true;
             pointClass = collision.GetComponent<PointClass>();
             //現在の逆 0or1 ビット演算に近いもの
             isSwitching = !isSwitching;
             var nextPos = collision.gameObject.GetComponent<PointClass>();
+            currentNum = nextPos.linePointNum;
             hitNum = nextPos.PointNumber;
             if (hitNum % 2 == 0)
             {
@@ -171,6 +204,7 @@ public class BLOCK : MonoBehaviour
                     StartCoroutine(MoveToDestinationPoint(nextPos._twoPoint, 0, isSwitching, nextPos._twoPoint));
                     isInversion = false;
                     onTheLine = true;
+                    return;
                 }
                 else if (isInversion == false)
                 {
@@ -178,6 +212,7 @@ public class BLOCK : MonoBehaviour
                     StartCoroutine(MoveToDestinationPoint(nextPos._onePoint, 0, isSwitching, nextPos._onePoint));
                     onTheLine = false;
                     isInversion = true;
+                    return;
                 }
             }
             else if (hitNum % 2 != 0)
@@ -187,6 +222,7 @@ public class BLOCK : MonoBehaviour
                     StartCoroutine(MoveToDestinationPoint(nextPos._twoPoint, 0, isSwitching, nextPos._twoPoint));
                     isInversion = false;
                     onTheLine = true;
+                    return;
                 }
                 else if (isInversion == false)
                 {
@@ -194,8 +230,13 @@ public class BLOCK : MonoBehaviour
                     StartCoroutine(MoveToDestinationPoint(nextPos._onePoint, 0, isSwitching, nextPos._onePoint));
                     onTheLine = false;
                     isInversion = true;
+                    return;
                 }
             }
+        }
+        else if (collision.gameObject.tag == "verticalLine")
+        {
+            currentLineNum = collision.gameObject.GetComponent<LINE>().LineNumber;
         }
     }
 

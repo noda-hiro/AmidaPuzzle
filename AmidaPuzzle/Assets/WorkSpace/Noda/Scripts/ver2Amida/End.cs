@@ -70,7 +70,7 @@ public class End : MonoBehaviour
                 StartCoroutine(FailurePlay());
                 return;
             }
-            else if (SceneManager.GetActiveScene().name == "Stage4")
+            else if (SceneManager.GetActiveScene().name == "Stage4"&& posController.blockList.All(i => i.isComplete == true))
             {
                 StartCoroutine(ClearEffectPlay());
                 return;

@@ -19,6 +19,7 @@ public class PointClass : MonoBehaviour
     public Vector3 _onePoint;
     public Vector3 _twoPoint;
     public Transform EndPos { get; set; }
+    public int linePointNum;
     // public Action BlockInit
 
     public void Init(int num)
