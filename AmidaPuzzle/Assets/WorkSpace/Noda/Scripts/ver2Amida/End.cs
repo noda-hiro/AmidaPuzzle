@@ -70,7 +70,7 @@ public class End : MonoBehaviour
                 StartCoroutine(FailurePlay());
                 return;
             }
-            else if (SceneManager.GetActiveScene().name == "Stage41")
+            else if (SceneManager.GetActiveScene().name == "Stage4")
             {
                 StartCoroutine(ClearEffectPlay());
                 return;
@@ -79,7 +79,7 @@ public class End : MonoBehaviour
             {
                 StartCoroutine(FailurePlay());
             }
-           
+
         }
     }
 
