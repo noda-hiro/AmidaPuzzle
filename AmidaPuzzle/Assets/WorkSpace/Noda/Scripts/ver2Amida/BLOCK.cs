@@ -55,7 +55,7 @@ public class BLOCK : MonoBehaviour
     [SerializeField] private EndPosController posController;
     private bool isStack;
     private bool OnVerticalLine;
-
+    [SerializeField] private noda.AudioManager audioManager;
     private void Start()
     {
         blockSpriteChange = GameObject.FindWithTag("BlockSprite").GetComponent<BlockSpriteChange>();
@@ -64,8 +64,7 @@ public class BLOCK : MonoBehaviour
     public IEnumerator MoveToDestinationPoint(Vector3 nextPos, int count, bool istemp, Vector3 vector/* PointClass _justInCasePintClass*/)
     {
         var dis = GetAngle(transform.position, nextPos);
-
-        if (dis > 60f || dis == 90)
+        if (dis > 10f)
         {
             moveSpeed = 200f;
         }
@@ -73,7 +72,7 @@ public class BLOCK : MonoBehaviour
         {
             moveSpeed = 300f;
         }
-
+        Debug.Log(moveSpeed);
         while (true)
         {
             if (this.transform.position == nextPos && isComplete == false)
@@ -119,7 +118,7 @@ public class BLOCK : MonoBehaviour
         var collsionPoint = collision.gameObject.GetComponentInChildren<BoxCollider2D>();
         var BType = collision.gameObject.GetComponentInParent<BLOCK>();
 
-        if (collision.gameObject.layer == 12 && OnVerticalLine)
+        if (collision.gameObject.layer == 12 && OnVerticalLine && BType.OnVerticalLine)
         {
             if (blockColorType == BType.blockColorType
                /* && onTheLine == false && BType.onTheLine == false*/)
@@ -131,12 +130,14 @@ public class BLOCK : MonoBehaviour
                 }
                 else
                 {
+                    audioManager.PlayStart("collisionSE");
                     BlockCoalescingCalculations(BType.puzzleCount);
                 }
 
             }
             else
             {
+                audioManager.PlayStart("coalescenceSE");
                 isSwitching = !isSwitching;
                 isInversion = true;
                 StartCoroutine(MoveToDestinationPoint(pointClass._currentPoint, 0, isSwitching, pointClass._twoPoint));
@@ -195,14 +196,6 @@ public class BLOCK : MonoBehaviour
                     isInversion = true;
                 }
             }
-        }
-        else if (collision.gameObject.tag == "verticalLine")
-        {
-            Debug.Log("ê¸Ç…ìñÇΩÇ¡ÇƒÇÈÇÊ");
-        }
-        else if (collision.gameObject.tag == "AMIDA")
-        {
-            Debug.Log(collision.gameObject.GetComponent<VerticalLine>().verticalLineNum);
         }
     }
 
