@@ -23,7 +23,7 @@ public class LinesPresenter : MonoBehaviour
     private List<GameObject> startPosObjectList;
     [SerializeField]
     private List<GameObject> endPosObjectList;
-
+    [SerializeField] private noda.AudioManager audioManager;
     private void Awake()
     {
         this.lineModel = new LinesModel();
@@ -159,6 +159,8 @@ public class LinesPresenter : MonoBehaviour
 
     private void BlockInit()
     {
+        audioManager.PlayStart("coalescenceButtonSE");
+
         for (int i = 0; i < Blocks.Count; i++)
         {
             Blocks[i].GetComponent<BLOCK>();

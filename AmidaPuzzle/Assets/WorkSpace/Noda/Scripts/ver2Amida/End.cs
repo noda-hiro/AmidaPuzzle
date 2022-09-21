@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class End : MonoBehaviour
 {
@@ -49,7 +50,6 @@ public class End : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var block = collision.gameObject.GetComponent<BLOCK>();
-
         block.isComplete = true;
 
         if (block.puzzleCount == (int)posType
@@ -67,15 +67,19 @@ public class End : MonoBehaviour
             }
             else if (posController.isClearList.All(i => i.isClear != true))
             {
-                posController.createLines.ReMoveLine();
-                posController.failurePanel.SetActive(true);
+                StartCoroutine(FailurePlay());
+                return;
+            }
+            else if (SceneManager.GetActiveScene().name == "Stage41")
+            {
+                StartCoroutine(ClearEffectPlay());
                 return;
             }
             else if (posController.isClearList[0].isClear == true && posController.isClearList[1].isClear == false || posController.isClearList[0].isClear == false && posController.isClearList[1].isClear == true)
             {
-                posController.createLines.ReMoveLine();
-                posController.failurePanel.SetActive(true);
+                StartCoroutine(FailurePlay());
             }
+           
         }
     }
 
@@ -86,6 +90,15 @@ public class End : MonoBehaviour
         yield return waitTimeOneFrame;
         posController.createLines.ReMoveLine();
         posController.clearPanel.SetActive(true);
+        yield break;
+    }
+
+    public IEnumerator FailurePlay()
+    {
+        yield return waitTime;
+        posController.createLines.ReMoveLine();
+        posController.failurePanel.SetActive(true);
+        yield break;
     }
 }
 
