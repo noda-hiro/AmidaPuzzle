@@ -142,10 +142,26 @@ public class LinesPresenter : MonoBehaviour
         endPosObjectList.Add(endposline);
         startposline.transform.parent = this.lineModel.firstClickLineObj.gameObject.transform;
         endposline.transform.parent = this.lineModel.secondClickLineObj.gameObject.transform;
-        startposline.transform.localPosition = new Vector3(0f, startposline.transform.localPosition.y, startposline.transform.localPosition.z);
+        if (startposline.transform.localPosition.y < endposline.transform.localPosition.y)
+        {
+            startposline.transform.localPosition = new Vector3(0f, startposline.transform.localPosition.y - 10f, startposline.transform.localPosition.z);
+        }
+        else
+        {
+            startposline.transform.localPosition = new Vector3(0f, startposline.transform.localPosition.y + 10f, startposline.transform.localPosition.z);
+        }
         //startposline.transform.localPosition = new Vector3(startposline.transform.localPosition.x, startposline.transform.localPosition.y, startposline.transform.localPosition.z);
-        endposline.transform.localPosition = new Vector3(0, endposline.transform.localPosition.y, endposline.transform.localPosition.z);
-        //endposline.transform.localPosition = new Vector3(endposline.transform.localPosition.x, endposline.transform.localPosition.y, endposline.transform.localPosition.z);
+        if (endposline.transform.localPosition.y < startposline.transform.localPosition.y)
+        {
+            endposline.transform.localPosition = new Vector3(0, endposline.transform.localPosition.y - 10f, endposline.transform.localPosition.z);
+        }
+        else
+        {
+            endposline.transform.localPosition = new Vector3(0, endposline.transform.localPosition.y + 10f, endposline.transform.localPosition.z);
+        }
+
+       
+        //  endposline.transform.localPosition = new Vector3(endposline.transform.localPosition.x- endposline.transform.localPosition.y, endposline.transform.localPosition.y, endposline.transform.localPosition.z);
         var endPoint = endposline.GetComponent<PointClass>();
         var startPoint = startposline.GetComponent<PointClass>();
         endPoint.linePointNum = num;
