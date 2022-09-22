@@ -131,8 +131,7 @@ public class BLOCK : MonoBehaviour
             Debug.Log(BType.currentNum);
             if (isInArea)
             {
-                if (blockColorType == BType.blockColorType /*&& currentNum != BType.currentNum || currentLineNum != BType.currentLineNum*/
-               /* && onTheLine == false && BType.onTheLine == false*/)
+                if (blockColorType == BType.blockColorType)
                 {
                     if (puzzleCount < BType.puzzleCount)
                     {
@@ -157,8 +156,7 @@ public class BLOCK : MonoBehaviour
                     return;
                 }
             }
-            else if (blockColorType == BType.blockColorType && currentNum == BType.currentNum || currentLineNum == BType.currentLineNum
-                /* && onTheLine == false && BType.onTheLine == false*/)
+            else if (blockColorType == BType.blockColorType && currentNum == BType.currentNum || currentLineNum == BType.currentLineNum)
             {
                 if (puzzleCount < BType.puzzleCount)
                 {

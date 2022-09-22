@@ -266,7 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btn: {fileID: 347366650}
   point: {fileID: 0}
-  myBlockLineNum: 1
+  myBlockLineNum: 0
   isSwitching: 0
   blockColorType: 6
   blockType: 1
@@ -4480,6 +4480,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1864429196}
     - target: {fileID: 1900825684571732229, guid: 6a93630f63f792e42a9f6de0994bc292, type: 3}
+      propertyPath: isClearList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1900825684571732229, guid: 6a93630f63f792e42a9f6de0994bc292, type: 3}
       propertyPath: blockList.Array.data[0]
       value: 
       objectReference: {fileID: 1816351989}
@@ -4494,11 +4498,11 @@ PrefabInstance:
     - target: {fileID: 1900825684571732229, guid: 6a93630f63f792e42a9f6de0994bc292, type: 3}
       propertyPath: isClearList.Array.data[0]
       value: 
-      objectReference: {fileID: 8125838474062901563}
+      objectReference: {fileID: 8125838473863035036}
     - target: {fileID: 1900825684571732229, guid: 6a93630f63f792e42a9f6de0994bc292, type: 3}
       propertyPath: isClearList.Array.data[1]
       value: 
-      objectReference: {fileID: 8125838473863035036}
+      objectReference: {fileID: 1256661812}
     - target: {fileID: 1900825684571732230, guid: 6a93630f63f792e42a9f6de0994bc292, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
