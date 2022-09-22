@@ -103,8 +103,8 @@ public class BLOCK : MonoBehaviour
             {
                 if (GetAngle(this.transform.position, nextPos) > 85 && GetAngle(this.transform.position, nextPos) < 95)
                 {
-                    Debug.Log(GetAngle(this.transform.position, nextPos));
                     isInversion = false;
+                    Debug.LogError(isInversion);
                 }
 
                 transform.position = Vector2.MoveTowards(this.transform.position, nextPos, moveSpeed * Time.deltaTime);
@@ -127,8 +127,6 @@ public class BLOCK : MonoBehaviour
 
         if (collision.gameObject.layer == 12)
         {
-            Debug.Log(currentNum);
-            Debug.Log(BType.currentNum);
             if (isInArea)
             {
                 if (blockColorType == BType.blockColorType)
@@ -153,10 +151,15 @@ public class BLOCK : MonoBehaviour
                     isSwitching = !isSwitching;
                     isInversion = true;
                     StartCoroutine(MoveToDestinationPoint(pointClass._currentPoint, 0, isSwitching, pointClass._twoPoint));
+                    if(this.transform.localPosition==pointClass._currentPoint)
+                    {
+                        Debug.LogError("OMG‚È‚ñ‚Ä‚±‚Á‚½@“¯‚¶ˆÊ’u‚Å“®‚¯‚È‚¢‚æ");
+                        StartCoroutine(MoveToDestinationPoint(pointClass._onePoint, 0, isSwitching, pointClass._twoPoint));
+                    }
                     return;
                 }
             }
-            else if (blockColorType == BType.blockColorType && currentNum == BType.currentNum || currentLineNum == BType.currentLineNum)
+            else if (blockColorType == BType.blockColorType && currentNum == BType.currentNum || blockColorType == BType.blockColorType && currentLineNum == BType.currentLineNum)
             {
                 if (puzzleCount < BType.puzzleCount)
                 {
