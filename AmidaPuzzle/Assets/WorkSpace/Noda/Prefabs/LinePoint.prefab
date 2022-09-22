@@ -120,6 +120,7 @@ MonoBehaviour:
   _currentPoint: {x: 0, y: 0, z: 0}
   _onePoint: {x: 0, y: 0, z: 0}
   _twoPoint: {x: 0, y: 0, z: 0}
+  linePointNum: 0
 --- !u!1 &4615574428869711287
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4316168956652276130}
   - component: {fileID: 4005016690441214589}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
   m_TagString: BG
   m_Icon: {fileID: 0}
@@ -170,7 +171,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.4204102, y: -0.5786972}
+  m_Offset: {x: -0.58517456, y: 4.4862976}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -181,5 +182,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 71.62, y: 98.96434}
+  m_Size: {x: 60.59857, y: 71.52173}
   m_EdgeRadius: 0

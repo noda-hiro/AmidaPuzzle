@@ -123,6 +123,91 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &149517443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 149517446}
+  - component: {fileID: 149517445}
+  - component: {fileID: 149517444}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &149517444
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149517443}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.42}
+  m_EdgeRadius: 0
+--- !u!61 &149517445
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149517443}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.97, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &149517446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149517443}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &268226045
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,10 +460,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae897351775c4d34fa6fe8c88c003047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laneNumber: 1
-  _currentPoint: {fileID: 462114459}
-  _onePoint: {fileID: 1671520480}
-  _twoPoint: {fileID: 1327919906}
+  _currentPoint: {x: 0, y: 0, z: 0}
+  _onePoint: {x: 0, y: 0, z: 0}
+  _twoPoint: {x: 0, y: 0, z: 0}
+  linePointNum: 0
 --- !u!114 &462114460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,10 +747,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae897351775c4d34fa6fe8c88c003047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laneNumber: 0
-  _currentPoint: {fileID: 512772684}
-  _onePoint: {fileID: 1776106120887395508}
-  _twoPoint: {fileID: 1892276241}
+  _currentPoint: {x: 0, y: 0, z: 0}
+  _onePoint: {x: 0, y: 0, z: 0}
+  _twoPoint: {x: 0, y: 0, z: 0}
+  linePointNum: 0
 --- !u!61 &512772686
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1144,10 +1229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32fabff0d182014469812b908e6d1469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineObj: {fileID: 7793203829077251858, guid: 90e89ed216c608844a686534e3bc4ae4, type: 3}
-  parent: {fileID: 313700943}
-  createLineCount: 2
-  RemainingLineCountText: {fileID: 968269861}
 --- !u!1 &867743034
 GameObject:
   m_ObjectHideFlags: 0
@@ -2156,10 +2237,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae897351775c4d34fa6fe8c88c003047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laneNumber: 0
-  _currentPoint: {fileID: 0}
-  _onePoint: {fileID: 0}
-  _twoPoint: {fileID: 0}
+  _currentPoint: {x: 0, y: 0, z: 0}
+  _onePoint: {x: 0, y: 0, z: 0}
+  _twoPoint: {x: 0, y: 0, z: 0}
+  linePointNum: 0
 --- !u!61 &1327919910
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2232,11 +2313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71afc3e8c813277408c535ab6afd325b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oneLineblockContorller: {fileID: 1603069371}
-  twoLineblockContorller: {fileID: 890287472}
-  block: {fileID: 1603069371}
-  block2: {fileID: 890287472}
-  clearPanel: {fileID: 1424009503}
 --- !u!4 &1348999136
 Transform:
   m_ObjectHideFlags: 0
@@ -2267,6 +2343,7 @@ MonoBehaviour:
   startBtn: {fileID: 0}
   reStartBtn: {fileID: 964775832}
   reMenuBtn: {fileID: 1520259742}
+  audioManager: {fileID: 0}
 --- !u!1 &1401860718
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,10 +3022,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae897351775c4d34fa6fe8c88c003047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laneNumber: 0
-  _currentPoint: {fileID: 1671520480}
-  _onePoint: {fileID: 462114459}
-  _twoPoint: {fileID: 1892276241}
+  _currentPoint: {x: 0, y: 0, z: 0}
+  _onePoint: {x: 0, y: 0, z: 0}
+  _twoPoint: {x: 0, y: 0, z: 0}
+  linePointNum: 0
 --- !u!222 &1671520481
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3068,10 +3145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae897351775c4d34fa6fe8c88c003047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laneNumber: 1
-  _currentPoint: {fileID: 0}
-  _onePoint: {fileID: 0}
-  _twoPoint: {fileID: 0}
+  _currentPoint: {x: 0, y: 0, z: 0}
+  _onePoint: {x: 0, y: 0, z: 0}
+  _twoPoint: {x: 0, y: 0, z: 0}
+  linePointNum: 0
 --- !u!61 &1892276245
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3473,10 +3550,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae897351775c4d34fa6fe8c88c003047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laneNumber: 1
-  _currentPoint: {fileID: 1776106120887395508}
-  _onePoint: {fileID: 512772684}
-  _twoPoint: {fileID: 1327919906}
+  _currentPoint: {x: 0, y: 0, z: 0}
+  _onePoint: {x: 0, y: 0, z: 0}
+  _twoPoint: {x: 0, y: 0, z: 0}
+  linePointNum: 0
 --- !u!61 &1776106120887395510
 BoxCollider2D:
   m_ObjectHideFlags: 0

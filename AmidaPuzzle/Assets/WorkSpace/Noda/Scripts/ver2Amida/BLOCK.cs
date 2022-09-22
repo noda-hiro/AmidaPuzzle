@@ -58,6 +58,7 @@ public class BLOCK : MonoBehaviour
     [SerializeField] private noda.AudioManager audioManager;
     private int currentNum;
     private int currentLineNum;
+    private bool isInArea;
 
     private void Start()
     {
@@ -128,8 +129,36 @@ public class BLOCK : MonoBehaviour
         {
             Debug.Log(currentNum);
             Debug.Log(BType.currentNum);
-            if (blockColorType == BType.blockColorType && currentNum == BType.currentNum || currentLineNum == BType.currentLineNum
+            if (isInArea)
+            {
+                if (blockColorType == BType.blockColorType /*&& currentNum != BType.currentNum || currentLineNum != BType.currentLineNum*/
                /* && onTheLine == false && BType.onTheLine == false*/)
+                {
+                    if (puzzleCount < BType.puzzleCount)
+                    {
+                        posController.blockList.Remove(this);
+                        Destroy(this.gameObject);
+                        return;
+                    }
+                    else
+                    {
+                        audioManager.PlayStart("collisionSE");
+                        BlockCoalescingCalculations(BType.puzzleCount);
+                        return;
+                    }
+
+                }
+                else if (blockColorType != BType.blockColorType)
+                {
+                    audioManager.PlayStart("coalescenceSE");
+                    isSwitching = !isSwitching;
+                    isInversion = true;
+                    StartCoroutine(MoveToDestinationPoint(pointClass._currentPoint, 0, isSwitching, pointClass._twoPoint));
+                    return;
+                }
+            }
+            else if (blockColorType == BType.blockColorType && currentNum == BType.currentNum || currentLineNum == BType.currentLineNum
+                /* && onTheLine == false && BType.onTheLine == false*/)
             {
                 if (puzzleCount < BType.puzzleCount)
                 {
@@ -151,7 +180,6 @@ public class BLOCK : MonoBehaviour
             }
             else if (blockColorType != BType.blockColorType)
             {
-                Debug.Log("‚ ‚¤");
                 audioManager.PlayStart("coalescenceSE");
                 isSwitching = !isSwitching;
                 isInversion = true;
@@ -237,6 +265,18 @@ public class BLOCK : MonoBehaviour
         else if (collision.gameObject.tag == "verticalLine")
         {
             currentLineNum = collision.gameObject.GetComponent<LINE>().LineNumber;
+        }
+        else if (collision.gameObject.layer == 13)
+        {
+            isInArea = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 13)
+        {
+            isInArea = false;
         }
     }
 
